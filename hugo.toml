@@ -4,7 +4,7 @@ canonifyURLs = true
 publishDir = "docs"
 languageCode = 'en-us'
 title = 'Drake Hooks'
-theme = 'my-theme'
+theme = 'dark-mysterious'
 
 [params]
 frontimage = "assets/kirby.gif"
