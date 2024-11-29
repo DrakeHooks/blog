@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Dynamic CSS and Favicon Paths -->
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
     <link rel="icon" type="image/x-icon" href="{{ "images/favicon.jpg" | relURL }}">
+
     <title>Photo Gallery</title>
 </head>
 <body>
@@ -21,12 +24,13 @@
 
     <!-- Photo Gallery -->
     <div id="content-wrapper" class="photo-page">
-        <h1 class="center-text">recent photos</h1>
+        <h1 class="center-text">Recent Photos</h1>
         <div class="gallery">
+            <!-- Dynamically load photos from static/photos/ -->
             {{ $photos := readDir "static/photos" }}
             {{ range $photos }}
             <div class="photo-item">
-                <img src="{{ "photos/" | relURL }}{{ .Name }}" alt="{{ .Name }}" />
+                <img src="{{ "photos/" | relURL }}{{ .Name }}" alt="{{ .Name | safeHTML }}" />
             </div>
             {{ end }}
         </div>
@@ -35,7 +39,8 @@
     <!-- Footer -->
     <div class="footer center-text">
         <p class="footer-text">
-            Copyright © 2024 Drake Hooks | Built with <a href="https://gohugo.io" class="footer-text">Hugo</a>
+            Copyright © 2024 Drake Hooks | Built with 
+            <a href="https://gohugo.io" class="footer-text">Hugo</a>
         </p>
     </div>
 </body>
