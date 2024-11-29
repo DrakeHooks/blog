@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://drakehooks.github.io/blog/'
 languageCode = 'en-us'
 title = 'Drake Hooks'
 theme = 'my-theme'
