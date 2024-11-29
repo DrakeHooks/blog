@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.jpg">
+    <!-- Use Hugo's `relURL` helper for CSS -->
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    <link rel="icon" type="image/x-icon" href="{{ "assets/favicon.jpg" | relURL }}">
     <title>{{ .Title }}</title>
 </head>
 <body>
@@ -12,11 +13,11 @@
     <!-- Navbar (Always Full Width) -->
     <header id="nav-container">
         <nav id="nav" class="nav">
-            <a href="/posts/" class="nav-link">posts</a>
-            <a href="/photo/" class="nav-link">photo</a>
+            <a href="{{ "/posts/" | relURL }}" class="nav-link">posts</a>
+            <a href="{{ "/photo/" | relURL }}" class="nav-link">photo</a>
         </nav>
         <div id="image-wrapper">
-            <img src="/assets/kirby.gif" alt="Logo">
+            <img src="{{ "assets/kirby.gif" | relURL }}" alt="Logo">
         </div>
     </header>
 
@@ -32,6 +33,7 @@
         </p>
     </footer>
 
-    <script src="/js/default.js"></script>
+    <!-- Use Hugo's `relURL` helper for JS -->
+    <script src="{{ "js/default.js" | relURL }}"></script>
 </body>
 </html>
