@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Update all paths with Hugo's helpers -->
-    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
-    <link rel="icon" type="image/x-icon" href="{{ "images/favicon.jpg" | relURL }}">
     <title>{{ .Title }}</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ "images/favicon.jpg" | relURL }}">
 </head>
 <body>
-
     <!-- Navbar -->
     <header id="nav-container">
         <nav id="nav" class="nav">
@@ -21,10 +23,10 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div id="content-wrapper" class="{{ if eq .Kind "page" }}single-page{{ else if eq .Kind "section" }}list-page{{ else }}default-page{{ end }}">
+    <!-- Main Content Wrapper -->
+    <main id="content-wrapper" class="{{ if eq .Kind "page" }}single-page{{ else if eq .Kind "section" }}list-page{{ else }}default-page{{ end }}">
         {{ block "main" . }}{{ end }}
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer class="footer center-text">
@@ -33,7 +35,7 @@
         </p>
     </footer>
 
-    <!-- JS -->
+    <!-- JavaScript -->
     <script src="{{ "js/default.js" | relURL }}"></script>
 </body>
 </html>
