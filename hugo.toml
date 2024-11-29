@@ -1,4 +1,6 @@
 baseURL = 'https://drakehooks.github.io/blog/'
+relativeURLs = true
+canonifyURLs = true
 publishDir = "docs"
 languageCode = 'en-us'
 title = 'Drake Hooks'
