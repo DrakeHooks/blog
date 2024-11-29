@@ -1,4 +1,5 @@
 baseURL = 'https://drakehooks.github.io/blog/'
+publishDir = "docs"
 languageCode = 'en-us'
 title = 'Drake Hooks'
 theme = 'my-theme'
