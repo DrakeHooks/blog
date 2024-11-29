@@ -7,7 +7,7 @@
         </a>
         {{ end }}
     </nav>
-    <script src="/js/navbar.js"></script>
+    <script src="{{ "js/navbar.js" | relURL }}"></script>
     <div id="image-wrapper">
         <img src="{{ .Site.Params.FrontImage }}" alt="Title image">
     </div>
