@@ -1,0 +1,10 @@
+h2 {
+    color: white;
+}
+
+div.post-body h2 {
+    color: #ffffff; /* White color */
+}
+h2 {
+    color: #ffffff !important;
+}

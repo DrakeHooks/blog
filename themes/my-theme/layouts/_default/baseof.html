@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.jpg">
+    <title>{{ .Title }}</title>
+</head>
+<body>
+
+    <!-- Navbar (Always Full Width) -->
+    <header id="nav-container">
+        <nav id="nav" class="nav">
+            <a href="/posts/" class="nav-link">posts</a>
+            <a href="/photo/" class="nav-link">photo</a>
+        </nav>
+        <div id="image-wrapper">
+            <img src="/assets/kirby.gif" alt="Logo">
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <div id="content-wrapper" class="{{ if eq .Kind "page" }}single-page{{ else if eq .Kind "section" }}list-page{{ else }}default-page{{ end }}">
+        {{ block "main" . }}{{ end }}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer center-text">
+        <p class="footer-text">
+            Copyright © 2024 Drake Hooks | Built with <a href="https://gohugo.io" class="footer-text">Hugo</a>
+        </p>
+    </footer>
+
+    <script src="/js/default.js"></script>
+</body>
+</html>

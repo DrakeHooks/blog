@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us en-uk"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/public/favicon.jpg">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    
+    <title>Drake Hooks &gt; recent</title>
+</head><body><div id="nav-container" class="container">
+    <nav id="nav" class="nav justify-content-center">
+        <a href="/posts/" class="nav-link">posts</a>
+        <a href="/posts/" class="nav-link">photo</a>
+
+
+    </nav>
+    <script src="/js/navbar.js"></script>
+    <div id="image-wrapper">
+        <img src="assets/kirby.gif" alt="Title image">
+    </div>
+</div><div id="content">
+  <head>
+    <link rel="stylesheet" href="/css/list.css">
+  </head>
+  <main>
+    <section class="post-list">
+      <article>
+          <h1 class="h1-special center-text">recent</h1>
+        
+        
+      </article>
+      <div class="divider" style="margin: 5%"></div>
+      <ul>
+        <!-- Ranges through content/posts/*.md -->
+        {{ range where .Pages ".Params.exclude_from_posts" "!=" true }}
+          {{ if ne .Section "photo" }}
+          <li>
+            <article class="post-list-i text">
+              <div class="post-list-meta">
+                <h3 class="post-list-title text">{{ .LinkTitle }}</h3>
+                <div style="width: 5%"></div>
+                <!-- <span style="float: right" class="date">{{ .Date.Format "Jan 2, 2006" }}</span> -->
+                <div style="width: 63%"></div>
+              </div>
+              <!-- <p>{{ .Summary }}</p> -->
+              <a href="{{ .Permalink }}" class="read-more anim-link">-> Read more</a>
+            </article>
+          </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+  </section>
+  </main>
+
+        </div><div class="footer center-text">
+    <p class="footer-text">Copyright © 2024 Drake Hooks | Built with <a href="https://gohugo.io" class="footer-text">Hugo</a></p>
+</div><script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script>
+  feather.replace()
+</script>
+<script src="/js/default.js"></script>
+</body>
+</html>

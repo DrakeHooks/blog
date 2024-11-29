@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+
+@font-face {
+    font-family: "Geist Mono";
+    src: url("/font/GeistMono-Regular.ttf");
+}
+
+html body.single.posts {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    background-color: #111; /* Add this temporarily for visual confirmation */
+}
+
+body {
+    background-color: #000000 !important;
+    font-family: Inter;
+    font-feature-settings: "zero";
+    padding: 0; /* Adds padding of 2rem to the left and right */
+    margin: 0; /* Centers the content horizontally */
+
+}
+
+
+pre {
+    background-color: #222; /* Dark background for code */
+    color: #eaeaea; /* Light text for contrast */
+    padding: 1.5rem; /* Add padding inside the block */
+    
+    border-radius: 10px; /* Rounded corners for aesthetics */
+    overflow-x: auto; /* Enable horizontal scrolling for long lines */
+    margin: 1.5rem auto; /* Center and add spacing around code blocks */
+    
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+code {
+    font-family: "JetBrains Mono", "Fira Code", monospace; /* Monospace font for code */
+    font-size: 0.9rem; /* Slightly smaller font size */
+    color: #8be9fd; /* Light cyan text for inline code */
+}
+a {
+    box-shadow: inset 0 0 0 3 #ffffff;
+    color: #fff;
+    padding: 0 .25rem;
+    margin: 0 -.25rem;
+    transition: color .8s ease-in-out, box-shadow .8s ease-in-out;
+    
+}
+
+
+.text {
+    color: white;
+}
+
+.index-content {
+    margin: 5%;
+    
+}
+
+code {
+    font-family: "Geist Mono", monospace;
+}
+
+div.post-body h2 {
+    color: #ffffff; /* White color */
+    
+}
+
+
+/* Full-width Navbar */
+#nav-container {
+    width: 100%; /* Ensure the navbar spans the full width */
+    background-color: #000; /* Optional: background color for contrast */
+}
+
+#nav {
+    display: flex;
+    justify-content: flex-start; /* Align links to the left */
+    padding: 1rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff; /* White text */
+    margin-right: 1rem; /* Space between links */
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+
+/* Constrained Content Wrapper */
+/* Default Content Wrapper */
+/* General Content Wrapper */
+#content-wrapper {
+    margin: 0 auto;
+    padding: 2rem;
+    
+}
+
+/* Single Post Page (max-width applied) */
+.single-page {
+    max-width: 900px;
+}
+
+/* Post Listing Page (no max-width) */
+.list-page {
+    max-width: none;
+}
+
+/* Default Page (applies globally) */
+.default-page {
+    max-width: 100%;
+}
+.footer-text {
+    font-family: "Fira Code", monospace;
+    color: #434343
+}
+
+h1 {
+    font-size: 1rem;
+    font-family: "Fira Code", monospace;
+}
+
+.h1-special {
+    font-size: 1.5rem;
+    font-family: "Fira Code", monospace;
+    
+}
+h2 {
+    color: #ffffff !important;
+}
+
+p {
+    color: white;
+    
+}
+
+.anim-link {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+}
+  
+
+  
+  .anim-link::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    /* transform: scaleX(0);
+    transform-origin: top left;
+    transition: transform 0.3s ease; */
+  }
+  
+  .anim-link:hover::before {
+    transform: scaleX(1);
+  }
+
+h1 h2 {
+    color: white;
+}
+h1 {
+    font-size: 1rem;
+    font-family: "Fira Code", monospace;
+}
+
+#image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#image-wrapper img {
+    width: 100px;
+    height: 100px;
+}
+
+.center-text {
+    color: rgb(56, 56, 56);
+    display: flex;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    font-family: "Fira Code", monospace;
+}
+
+#card-nav {
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    justify-content: center;
+    align-items: center;
+    a {
+        text-decoration: none;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+
+.divider{
+    width: 90%;
+    height: 3px;
+    margin: 1.5rem auto;
+    background: #434343;
+    border-radius: 3px;
+    border-bottom: 1px solid black;
+}
+
+.about-content {
+    margin: 5%;
+}
+
+#hidden {
+    display: none
+}
+
+
+
+.photo-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Gallery Styles */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Individual Photo Item Styles */
+.photo-item {
+    border: 2px solid #ccc; /* Grey border */
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #111;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.photo-item img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}

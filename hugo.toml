@@ -1,0 +1,7 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Drake Hooks'
+theme = 'my-theme'
+
+[params]
+frontimage = "assets/kirby.gif"

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
+    <title>Photo Gallery</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="nav-container" class="container">
+        <nav id="nav" class="nav justify-content-center">
+            <a href="/posts/" class="nav-link">posts</a>
+            <a href="/photo/" class="nav-link">photo</a>
+        </nav>
+        <div id="image-wrapper">
+            <img src="/assets/kirby.gif" alt="Title image">
+        </div>
+    </div>
+
+    <!-- Photo Gallery -->
+    <div id="content-wrapper" class="photo-page">
+        <h1 class="center-text">Photo Gallery</h1>
+        <div class="gallery">
+            {{ $photos := readDir "static/photos" }}
+            {{ range $photos }}
+            <div class="photo-item">
+                <img src="/photos/{{ .Name }}" alt="{{ .Name }}" />
+            </div>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer center-text">
+        <p class="footer-text">
+            Copyright © 2024 Drake Hooks | Built with <a href="https://gohugo.io" class="footer-text">Hugo</a>
+        </p>
+    </div>
+</body>
+</html>
