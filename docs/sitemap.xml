@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blog/</loc>
+    <loc>https://drakehooks.github.io/blog/</loc>
     <lastmod>2024-11-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/photo/</loc>
+    <loc>https://drakehooks.github.io/blog/photo/</loc>
     <lastmod>2024-11-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/posts/</loc>
+    <loc>https://drakehooks.github.io/blog/posts/</loc>
     <lastmod>2024-11-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/posts/pentesting-with-selenium-webdriver/</loc>
+    <loc>https://drakehooks.github.io/blog/posts/pentesting-with-selenium-webdriver/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/categories/</loc>
+    <loc>https://drakehooks.github.io/blog/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/blog/tags/</loc>
+    <loc>https://drakehooks.github.io/blog/tags/</loc>
   </url>
 </urlset>
