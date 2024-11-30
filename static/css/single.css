@@ -10,7 +10,7 @@
 }
 
 html body.single.posts {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 2rem;
     background-color: #111; /* Add this temporarily for visual confirmation */

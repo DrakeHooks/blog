@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us en-uk">
 <head>
-    <!-- Livereload for development -->
-    <script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,10 +10,6 @@
     <link rel="stylesheet" href="{{ "css/list.css" | relURL }}">
     <link rel="icon" type="image/x-icon" href="{{ "images/favicon.jpg" | relURL }}">
 
-    <!-- External Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <title>{{ .Title }}</title>
 </head>
@@ -68,12 +61,5 @@
         </p>
     </div>
 
-    <!-- JavaScript -->
-    <script src="{{ "js/navbar.js" | relURL }}"></script>
-    <script src="{{ "js/default.js" | relURL }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script>
-        feather.replace();
-    </script>
 </body>
 </html>
