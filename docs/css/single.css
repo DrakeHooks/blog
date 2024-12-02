@@ -199,5 +199,22 @@ h1 {
     display: none
 }
 
+.github-link {
+    margin-left: auto; /* Push to the far right */
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.github-logo {
+    width: 24px; /* Adjust size as needed */
+    height: 24px;
+    filter: brightness(100%); /* Ensure it remains white */
+    transition: transform 0.2s ease;
+}
+
+.github-link:hover .github-logo {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
 
 
