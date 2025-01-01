@@ -118,7 +118,8 @@ div.post-body h2 {
     font-family: "Fira Code", monospace;
     color: #434343;
     text-align: center; /* Centers text horizontally */
-    padding: 1rem; /* Adds breathing room */
+    /* padding: 1rem; */
+     /* Adds breathing room */
     margin-top: 2rem; /* Space above footer */
 }
 

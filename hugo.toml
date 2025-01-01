@@ -1,6 +1,7 @@
 baseURL = 'https://blog.drakehooks.net/'
 relativeURLs = true
 canonifyURLs = true
+contentDir = 'content'
 publishDir = "docs"
 languageCode = 'en-us'
 title = 'Drake Hooks'
