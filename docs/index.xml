@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Drake Hooks</title>
-    <link>https://blog.drakehooks.net/</link>
+    <link>https://blog.drakehooks.net:1313/</link>
     <description>Recent content on Drake Hooks</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 28 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://blog.drakehooks.net/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.drakehooks.net:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>photo</title>
-      <link>https://blog.drakehooks.net/photo/</link>
+      <link>https://blog.drakehooks.net:1313/photo/</link>
       <pubDate>Thu, 28 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://blog.drakehooks.net/photo/</guid>
+      <guid>https://blog.drakehooks.net:1313/photo/</guid>
       <description></description>
     </item>
     <item>
       <title>Pentesting with Selenium WebDriver</title>
-      <link>https://blog.drakehooks.net/posts/pentesting-with-selenium-webdriver/</link>
+      <link>https://blog.drakehooks.net:1313/posts/pentesting-with-selenium-webdriver/</link>
       <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/posts/pentesting-with-selenium-webdriver/</guid>
+      <guid>https://blog.drakehooks.net:1313/posts/pentesting-with-selenium-webdriver/</guid>
       <description>Introduction Selenium combined with chromium is a powerful tool for pentesting web applications. In this post, we will explore how to use Selenium WebDriver with a custom chromium instance to scrape data and execute desired actions. NOTE: This post is for educational purposes only. Always follow the terms of service. 😇&#xA;Background For this post, we will be looking at some code I wrote for pentesting dingdingding.com, a social casino website that offers a daily bonus to its users.</description>
     </item>
   </channel>
