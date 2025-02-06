@@ -1,7 +1,7 @@
 +++
 title = 'Tailscale Containerized as network_mode'
 date = 2025-02-05T12:40:17-05:00
-draft = true
+draft = false
 tags = ["docker", "tailscale", "networking"]
 +++
 
