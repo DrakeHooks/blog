@@ -52,7 +52,17 @@ a {
     
 }
 
+@media (max-width: 440px) {
+    h1.h1-special {
+      font-size: .9rem; 
+    }
+  }
 
+@media (max-width: 440px) {
+    .center-text {
+      font-size: .8rem; 
+    }
+  }  
 
 .text {
     color: white;
