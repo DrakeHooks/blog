@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Automation on Drake Hooks</title>
-    <link>https://blog.drakehooks.net:1313/tags/automation/</link>
+    <link>https://blog.drakehooks.net/tags/automation/</link>
     <description>Recent content in Automation on Drake Hooks</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 27 Nov 2024 05:36:29 -0500</lastBuildDate>
-    <atom:link href="https://blog.drakehooks.net:1313/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.drakehooks.net/tags/automation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pentesting with Selenium WebDriver</title>
-      <link>https://blog.drakehooks.net:1313/posts/pentesting-with-selenium-webdriver/</link>
+      <link>https://blog.drakehooks.net/posts/pentesting-with-selenium-webdriver/</link>
       <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
-      <guid>https://blog.drakehooks.net:1313/posts/pentesting-with-selenium-webdriver/</guid>
+      <guid>https://blog.drakehooks.net/posts/pentesting-with-selenium-webdriver/</guid>
       <description>Introduction Selenium combined with chromium is a powerful tool for pentesting web applications. In this post, we will explore how to use Selenium WebDriver with a custom chromium instance to scrape data and execute desired actions. NOTE: This post is for educational purposes only. Always follow the terms of service. 😇&#xA;Background For this post, we will be looking at some code I wrote for pentesting dingdingding.com, a social casino website that offers a daily bonus to its users.</description>
     </item>
   </channel>

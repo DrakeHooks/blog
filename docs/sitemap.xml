@@ -2,42 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.drakehooks.net:1313/tags/docker/</loc>
+    <loc>https://blog.drakehooks.net/</loc>
     <lastmod>2025-02-05T12:40:17-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net:1313/</loc>
+    <loc>https://blog.drakehooks.net/posts/</loc>
     <lastmod>2025-02-05T12:40:17-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net:1313/tags/networking/</loc>
-    <lastmod>2025-02-05T12:40:17-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.drakehooks.net:1313/posts/</loc>
-    <lastmod>2025-02-05T12:40:17-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.drakehooks.net:1313/tags/</loc>
-    <lastmod>2025-02-05T12:40:17-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.drakehooks.net:1313/tags/tailscale/</loc>
-    <lastmod>2025-02-05T12:40:17-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.drakehooks.net:1313/posts/tailscale-containerized/</loc>
-    <lastmod>2025-02-05T12:40:17-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.drakehooks.net:1313/photo/</loc>
+    <loc>https://blog.drakehooks.net/photo/</loc>
     <lastmod>2024-11-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net:1313/tags/automation/</loc>
+    <loc>https://blog.drakehooks.net/tags/automation/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net:1313/posts/pentesting-with-selenium-webdriver/</loc>
+    <loc>https://blog.drakehooks.net/tags/docker/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net:1313/tags/reverse-engineering/</loc>
+    <loc>https://blog.drakehooks.net/posts/pentesting-with-selenium-webdriver/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net:1313/tags/selenium/</loc>
+    <loc>https://blog.drakehooks.net/tags/reverse-engineering/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net:1313/categories/</loc>
+    <loc>https://blog.drakehooks.net/tags/selenium/</loc>
+    <lastmod>2024-11-27T05:36:29-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.drakehooks.net/tags/</loc>
+    <lastmod>2024-11-27T05:36:29-05:00</lastmod>
+  </url><url>
+    <loc>https://blog.drakehooks.net/categories/</loc>
   </url>
 </urlset>

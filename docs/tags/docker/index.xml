@@ -2,24 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on Drake Hooks</title>
-    <link>https://blog.drakehooks.net:1313/tags/docker/</link>
+    <link>https://blog.drakehooks.net/tags/docker/</link>
     <description>Recent content in Docker on Drake Hooks</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Feb 2025 12:40:17 -0500</lastBuildDate>
-    <atom:link href="https://blog.drakehooks.net:1313/tags/docker/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Tailscale Containerized as network_mode</title>
-      <link>https://blog.drakehooks.net:1313/posts/tailscale-containerized/</link>
-      <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
-      <guid>https://blog.drakehooks.net:1313/posts/tailscale-containerized/</guid>
-      <description>Introduction The network_mode flag in Docker allows you to specify the networking mode for a container. The use cases for this are extensive. For my use case, I wanted to pass in a phone&amp;rsquo;s LTE network as a way to have a second public IP address for another docker service. The objective is to have two containers. One being the Tailscale container (configured in compose.yaml) and the container we want to set network_mode: &amp;ldquo;service:tailscale&amp;rdquo; as.</description>
-    </item>
+    <lastBuildDate>Wed, 27 Nov 2024 05:36:29 -0500</lastBuildDate>
+    <atom:link href="https://blog.drakehooks.net/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pentesting with Selenium WebDriver</title>
-      <link>https://blog.drakehooks.net:1313/posts/pentesting-with-selenium-webdriver/</link>
+      <link>https://blog.drakehooks.net/posts/pentesting-with-selenium-webdriver/</link>
       <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
-      <guid>https://blog.drakehooks.net:1313/posts/pentesting-with-selenium-webdriver/</guid>
+      <guid>https://blog.drakehooks.net/posts/pentesting-with-selenium-webdriver/</guid>
       <description>Introduction Selenium combined with chromium is a powerful tool for pentesting web applications. In this post, we will explore how to use Selenium WebDriver with a custom chromium instance to scrape data and execute desired actions. NOTE: This post is for educational purposes only. Always follow the terms of service. 😇&#xA;Background For this post, we will be looking at some code I wrote for pentesting dingdingding.com, a social casino website that offers a daily bonus to its users.</description>
     </item>
   </channel>
