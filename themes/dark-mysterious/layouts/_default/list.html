@@ -17,20 +17,38 @@
         {{ range where .Pages ".Params.exclude_from_posts" "!=" true }}
           {{ if ne .Section "photo" }}
           <li>
+          <a href="{{ .Permalink }}" class="post-link"> 
             <article class="post-list-i text">
               <div class="post-list-meta">
                 <h3 class="post-list-title text">{{ .LinkTitle }}</h3>
+                <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
                 <div style="width: 5%"></div>
                 <!-- <span style="float: right" class="date">{{ .Date.Format "Jan 2, 2006" }}</span> -->
                 <div style="width: 63%"></div>
               </div>
+
+                    <!-- If there are tags, list them below the title/meta -->
+      {{ if .Params.tags }}
+      <div class="tag-list">
+        {{ range .Params.tags }}
+          <span class="tag">{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
               <!-- <p>{{ .Summary }}</p> -->
-              <a href="{{ .Permalink }}" class="read-more anim-link">-> Read more</a>
             </article>
+          </a>
           </li>
           {{ end }}
         {{ end }}
       </ul>
+          <!-- Footer -->
+    <div class="footer center-text">
+      <p class="footer-text">
+          © 2025 Drake Hooks | Built with
+          <a href="https://gohugo.io" class="footer-text">Hugo</a>
+      </p>
+  </div>
     </section>
   </main>
 {{ end }}

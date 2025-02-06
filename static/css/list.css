@@ -1,5 +1,5 @@
 .post-list-meta {
-    /* display: flex; */
+    display: flex;
     justify-content: center;
     align-items: center
 }
@@ -18,25 +18,29 @@ ul {
     padding: 0;
     margin: 0;
 }
-
+.post-link {
+    display: block;         /* So the entire box is clickable */
+    text-decoration: none;  /* Remove underlines */
+    color: inherit;         /* Use the same text color as the parent */
+  }
+  
 .post-list-i {
     transition: box-shadow .5s;
     background-color: #0a0a0a;
-    margin: 1.5rem auto; /* Centered horizontally */
-
+    /* margin: 1rem auto;  */
     margin-right: 50%;
     margin-left: 10%;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
     border-color: #434343;
-    box-shadow: 5px 5px 15px 5px #505050;
+    /* box-shadow: 5px 5px 15px 5px #505050; */
     border-width: 2px;
     border-style: solid;
     border-radius: 10px;
     padding: 10px;
 }
 .post-list-i:hover {
-    box-shadow: 10px 10px 15px 5px #505050;
+    box-shadow: 5px 5px 15px 5px #505050;
 }
 
 .post-list-title {
@@ -58,11 +62,11 @@ ul {
     }
 
     .post-list-title {
-        font-size: 1.5rem; /* Smaller font size for mobile */
+        font-size: 1.2rem; /* Smaller font size for mobile */
     }
 }
 .github-link {
-    margin-left: auto; /* Push to the far right */
+    margin-left: auto; 
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -78,3 +82,37 @@ ul {
 .github-link:hover .github-logo {
     transform: scale(1.1); /* Slight zoom on hover */
 }
+
+.post-list-meta {
+    display: flex;
+    flex-direction: column; /* vertical stack */
+    align-items: flex-start; /* left-align each element */
+    margin-bottom: 0.5rem;   /* spacing beneath for the tags */
+  }
+  
+  .post-list-title {
+    margin: 0 0 0.25rem 0;   /* small space below the title */
+  }
+  
+  .post-date {
+    margin-bottom: 0.5rem;   /* space under date before tags */
+    font-size: 0.9rem;
+    color: #ccc;
+    background-color: #222;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;  /* so tags wrap on small screens */
+    gap: 0.5rem;
+  }
+  
+  .tag {
+    background-color: #333;
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.85rem;
+  }

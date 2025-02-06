@@ -32,20 +32,24 @@
         <div class="gallery">
             <!-- Dynamically load photos from static/photos/ -->
             {{ $photos := readDir "static/photos" }}
-            {{ range $photos }}
-                {{ if not .IsDir }} <!-- Exclude directories -->
+            {{ $sortedPhotos := sort $photos "ModTime" "desc" }}
+            {{ range $sortedPhotos }}
+              {{ if not .IsDir }}
                 <div class="photo-item">
-                    <img src="{{ "photos/" | relURL }}{{ .Name }}" alt="{{ .Name | safeHTML }}" />
+                  <img
+                    src="{{ "photos/" | relURL }}{{ .Name }}"
+                    alt="{{ .Name | safeHTML }}"
+                    loading="lazy"
+                  />
                 </div>
-                {{ end }}
+              {{ end }}
             {{ end }}
-        </div>
-    </div>
-
+          </div>
+          
     <!-- Footer -->
     <div class="footer center-text">
         <p class="footer-text">
-            Copyright © 2025 Drake Hooks | Built with 
+            © 2025 Drake Hooks | Built with 
             <a href="https://gohugo.io" class="footer-text">Hugo</a>
         </p>
     </div>
