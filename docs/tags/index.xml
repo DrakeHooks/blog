@@ -6,20 +6,34 @@
     <description>Recent content in Tags on Drake Hooks</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Nov 2024 05:36:29 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 05 Feb 2025 12:40:17 -0500</lastBuildDate>
     <atom:link href="https://blog.drakehooks.net/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker</title>
+      <link>https://blog.drakehooks.net/tags/docker/</link>
+      <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
+      <guid>https://blog.drakehooks.net/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Networking</title>
+      <link>https://blog.drakehooks.net/tags/networking/</link>
+      <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
+      <guid>https://blog.drakehooks.net/tags/networking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tailscale</title>
+      <link>https://blog.drakehooks.net/tags/tailscale/</link>
+      <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
+      <guid>https://blog.drakehooks.net/tags/tailscale/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Automation</title>
       <link>https://blog.drakehooks.net/tags/automation/</link>
       <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
       <guid>https://blog.drakehooks.net/tags/automation/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Docker</title>
-      <link>https://blog.drakehooks.net/tags/docker/</link>
-      <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/tags/docker/</guid>
       <description></description>
     </item>
     <item>

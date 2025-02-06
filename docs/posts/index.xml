@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Drake Hooks</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Feb 2025 12:40:17 -0500</lastBuildDate>
     <atom:link href="https://blog.drakehooks.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tailscale Containerized as network_mode</title>
+      <link>https://blog.drakehooks.net/posts/tailscale-containerized/</link>
+      <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
+      <guid>https://blog.drakehooks.net/posts/tailscale-containerized/</guid>
+      <description>Introduction The network_mode flag in Docker allows you to specify the networking mode for a container. The use cases for this are extensive. For my use case, I wanted to pass in a phone&amp;rsquo;s LTE network as a way to have a second public IP address for another docker service. The objective is to have two containers. One being the Tailscale container (configured in compose.yaml) and the container we want to set network_mode: &amp;ldquo;service:tailscale&amp;rdquo; as.</description>
+    </item>
     <item>
       <title>photo</title>
       <link>https://blog.drakehooks.net/photo/</link>
