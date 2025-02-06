@@ -299,6 +299,18 @@ h1 {
     }
 }
 
+@media (max-width: 440px) {
+    h1.h1-special {
+      font-size: .9rem; 
+    }
+  }
+
+@media (max-width: 440px) {
+    .center-text {
+      font-size: .8rem; 
+    }
+  }  
+
 .github-link {
     margin-left: auto; /* Push to the far right */
     display: flex;
