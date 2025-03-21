@@ -2,52 +2,73 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Drake Hooks</title>
-    <link>https://blog.drakehooks.net/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Drake Hooks</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Feb 2025 12:40:17 -0500</lastBuildDate>
-    <atom:link href="https://blog.drakehooks.net/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Mar 2025 20:25:05 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Docker</title>
-      <link>https://blog.drakehooks.net/tags/docker/</link>
-      <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/tags/docker/</guid>
+      <title>Ansible</title>
+      <link>http://localhost:1313/tags/ansible/</link>
+      <pubDate>Sat, 08 Mar 2025 20:25:05 -0500</pubDate>
+      <guid>http://localhost:1313/tags/ansible/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloudflare</title>
+      <link>http://localhost:1313/tags/cloudflare/</link>
+      <pubDate>Sat, 08 Mar 2025 20:25:05 -0500</pubDate>
+      <guid>http://localhost:1313/tags/cloudflare/</guid>
       <description></description>
     </item>
     <item>
       <title>Networking</title>
-      <link>https://blog.drakehooks.net/tags/networking/</link>
+      <link>http://localhost:1313/tags/networking/</link>
+      <pubDate>Sat, 08 Mar 2025 20:25:05 -0500</pubDate>
+      <guid>http://localhost:1313/tags/networking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nginx</title>
+      <link>http://localhost:1313/tags/nginx/</link>
+      <pubDate>Sat, 08 Mar 2025 20:25:05 -0500</pubDate>
+      <guid>http://localhost:1313/tags/nginx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>http://localhost:1313/tags/docker/</link>
       <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/tags/networking/</guid>
+      <guid>http://localhost:1313/tags/docker/</guid>
       <description></description>
     </item>
     <item>
       <title>Tailscale</title>
-      <link>https://blog.drakehooks.net/tags/tailscale/</link>
+      <link>http://localhost:1313/tags/tailscale/</link>
       <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/tags/tailscale/</guid>
+      <guid>http://localhost:1313/tags/tailscale/</guid>
       <description></description>
     </item>
     <item>
       <title>Automation</title>
-      <link>https://blog.drakehooks.net/tags/automation/</link>
+      <link>http://localhost:1313/tags/automation/</link>
       <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/tags/automation/</guid>
+      <guid>http://localhost:1313/tags/automation/</guid>
       <description></description>
     </item>
     <item>
       <title>Reverse-Engineering</title>
-      <link>https://blog.drakehooks.net/tags/reverse-engineering/</link>
+      <link>http://localhost:1313/tags/reverse-engineering/</link>
       <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/tags/reverse-engineering/</guid>
+      <guid>http://localhost:1313/tags/reverse-engineering/</guid>
       <description></description>
     </item>
     <item>
       <title>Selenium</title>
-      <link>https://blog.drakehooks.net/tags/selenium/</link>
+      <link>http://localhost:1313/tags/selenium/</link>
       <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/tags/selenium/</guid>
+      <guid>http://localhost:1313/tags/selenium/</guid>
       <description></description>
     </item>
   </channel>

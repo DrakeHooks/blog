@@ -7,5 +7,10 @@ languageCode = 'en-us'
 title = 'Drake Hooks'
 theme = 'dark-mysterious'
 
+[markup]
+  [markup.highlight]
+    style = "darkula"  # or another theme like "monokai", "github", etc.
+
+
 [params]
 frontimage = "assets/kirby.gif"

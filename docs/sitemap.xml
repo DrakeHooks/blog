@@ -2,42 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.drakehooks.net/tags/docker/</loc>
+    <loc>http://localhost:1313/tags/ansible/</loc>
+    <lastmod>2025-03-20T20:25:05-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/cloudflare/</loc>
+    <lastmod>2025-03-20T20:25:05-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-03-20T20:25:05-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/exposing-services-nginx-ansible-cloudflare/</loc>
+    <lastmod>2025-03-20T20:25:05-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/networking/</loc>
+    <lastmod>2025-03-20T20:25:05-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/nginx/</loc>
+    <lastmod>2025-03-20T20:25:05-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-03-20T20:25:05-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-03-20T20:25:05-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/docker/</loc>
     <lastmod>2025-02-05T12:40:17-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net/</loc>
+    <loc>http://localhost:1313/tags/tailscale/</loc>
     <lastmod>2025-02-05T12:40:17-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net/tags/networking/</loc>
+    <loc>http://localhost:1313/posts/tailscale-containerized/</loc>
     <lastmod>2025-02-05T12:40:17-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net/posts/</loc>
-    <lastmod>2025-02-05T12:40:17-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.drakehooks.net/tags/</loc>
-    <lastmod>2025-02-05T12:40:17-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.drakehooks.net/tags/tailscale/</loc>
-    <lastmod>2025-02-05T12:40:17-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.drakehooks.net/posts/tailscale-containerized/</loc>
-    <lastmod>2025-02-05T12:40:17-05:00</lastmod>
-  </url><url>
-    <loc>https://blog.drakehooks.net/photo/</loc>
+    <loc>http://localhost:1313/photo/</loc>
     <lastmod>2024-11-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net/tags/automation/</loc>
+    <loc>http://localhost:1313/tags/automation/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net/posts/pentesting-with-selenium-webdriver/</loc>
+    <loc>http://localhost:1313/posts/pentesting-with-selenium-webdriver/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net/tags/reverse-engineering/</loc>
+    <loc>http://localhost:1313/tags/reverse-engineering/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net/tags/selenium/</loc>
+    <loc>http://localhost:1313/tags/selenium/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>https://blog.drakehooks.net/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url>
 </urlset>

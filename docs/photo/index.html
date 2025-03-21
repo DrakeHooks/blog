@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -22,7 +22,7 @@
             </a>
         </nav>
         <div id="image-wrapper">
-            <img src="../images/kirby.gif" alt="Title image">
+          <img id="random-image" src="" alt="Title image">
         </div>
     </div>
 
@@ -33,6 +33,26 @@
             
             
             
+            
+              
+                <div class="photo-item">
+                  <img
+                    src="../photos/IMG_0910.jpeg"
+                    alt="IMG_0910.jpeg"
+                    loading="lazy"
+                  />
+                </div>
+              
+            
+              
+                <div class="photo-item">
+                  <img
+                    src="../photos/IMG_0691.jpeg"
+                    alt="IMG_0691.jpeg"
+                    loading="lazy"
+                  />
+                </div>
+              
             
               
                 <div class="photo-item">
@@ -165,5 +185,25 @@
             <a href="https://gohugo.io" class="footer-text">Hugo</a>
         </p>
     </div>
+    
+    
+    <script>
+      
+      var images = [
+        '\/images\/metaknight.gif',
+        '\/images\/kirby.gif'
+      ];
+      
+      var randomImage = images[Math.floor(Math.random() * images.length)];
+      
+      var randomImageElem = document.getElementById("random-image");
+      randomImageElem.src = randomImage;
+      
+      if (randomImage.indexOf("kirby.gif") !== -1) {
+        randomImageElem.classList.add("kirby");
+      } else if (randomImage.indexOf("metaknight.gif") !== -1) {
+        randomImageElem.classList.add("metaknight");
+      }
+    </script>
 </body>
 </html>

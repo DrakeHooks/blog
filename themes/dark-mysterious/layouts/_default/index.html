@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="{{ "css/list.css" | relURL }}">
     <link rel="icon" type="image/x-icon" href="{{ "images/favicon.jpg" | relURL }}">
 
-
     <title>{{ .Title }}</title>
 </head>
 <body>
@@ -19,14 +18,11 @@
         <nav id="nav" class="nav justify-content-center">
             <a href="{{ "/posts/" | relURL }}" class="nav-link">posts</a>
             <a href="{{ "/photo/" | relURL }}" class="nav-link">photo</a>
-                <!-- GitHub Link -->
-                <a href="https://github.com/DrakeHooks" target="_blank" class="nav-link github-link">
-                    <img src="/images/github-logo-white.png" alt="GitHub" class="github-logo">
-                </a> 
+            <!-- GitHub Link -->
+            <a href="https://github.com/DrakeHooks" target="_blank" class="nav-link github-link">
+                <img src="/images/github-logo-white.png" alt="GitHub" class="github-logo">
+            </a> 
         </nav>
-        <!-- <div id="image-wrapper">
-            <img src="{{ "images/kirby.gif" | relURL }}" alt="Title image">
-        </div> -->
     </div>
 
     <!-- Main Content -->
@@ -34,23 +30,45 @@
         <main>
             <section class="post-list">
                 <article>
-                    <h1 class="h1-special center-text">recent</h1>
+                    <h1 class="h1-special center-text">drakeblog</h1>
                 </article>
                 <div class="divider" style="margin: 5%"></div>
+                
+                {{/* 
+                  1) Grab all regular pages (not list pages).
+                  2) Exclude any that have exclude_from_posts = true in front matter.
+                  3) Exclude any in the "photo" section.
+                  4) Sort the remaining pages by date, descending.
+                  5) Display only the first one.
+                */}}
+                {{ $filtered := where .Site.RegularPages ".Params.exclude_from_posts" "!=" true }}
+                {{ $filtered = where $filtered "Section" "ne" "photo" }}
+                {{ $filtered = sort $filtered "Date" "desc" }}
+
                 <ul>
-                    <!-- Range through posts -->
-                    {{ range where .Pages ".Params.exclude_from_posts" "!=" true }}
-                        {{ if ne .Section "photo" }}
-                            <li>
-                                <article class="post-list-i text">
-                                    <div class="post-list-meta">
-                                        <h3 class="post-list-title text">{{ .LinkTitle }}</h3>
-                                        <div style="width: 63%"></div>
-                                    </div>
-                                    <a href="{{ .Permalink }}" class="read-more anim-link">-> Read more</a>
-                                </article>
-                            </li>
-                        {{ end }}
+                    {{ range first 1 $filtered }}
+                    <li>
+                        <!-- Wrap the entire post in an anchor, so it's all clickable -->
+                        <a href="{{ .Permalink }}" class="post-link"> 
+                            <article class="post-list-i text">
+                                <div class="post-list-meta">
+                                    <h3 class="post-list-title text">{{ .LinkTitle }}</h3>
+                                    <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+                                    <div style="width: 5%"></div>
+                                    <div style="width: 63%"></div>
+                                </div>
+
+                                <!-- If there are tags, list them below the title/meta -->
+                                {{ if .Params.tags }}
+                                <div class="tag-list">
+                                    {{ range .Params.tags }}
+                                    <span class="tag">{{ . }}</span>
+                                    {{ end }}
+                                </div>
+                                {{ end }}
+                            </article>
+                        </a>
+                    </li>
                     {{ end }}
                 </ul>
             </section>
@@ -64,6 +82,5 @@
             <a href="https://gohugo.io" class="footer-text">Hugo</a>
         </p>
     </div>
-
 </body>
 </html>

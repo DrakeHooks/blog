@@ -19,13 +19,14 @@ Before creating the container, lets take a look at the Tailscale admin console. 
 ![admin console](/photos/blogimages/tailscale.png)
 
 ## Container Preparation
-Still in the admin console, we need to get the copy the Tailscale address of the machine to route traffic through. We also need to generate an auth key. This key will be used to authenticate the container without an interactive login. To do this, head to Settings -> Personal Settings -> Keys. Generate the key with the options that best suit your security needs. Also, remember to copy the full key as it will not be shown again.
+Still in the admin console, we need to get the Tailscale address of the machine to route traffic through. We also need to generate an auth key. This key will be used to authenticate the container without an interactive login. To do this, head to Settings -> Personal Settings -> Keys. Generate the key with the options that best suit your security needs. Also, remember to copy the full key as it will not be shown again.
 
 ## Containerized Tailscale
 Now we will create the compose.yaml file. This file will contain the configuration for our Tailscale container. While the ```command:  ```flag  is optional, it simplifies our setup by telling the container which Tailscale address and auth key to use. If you are not using an exit node, then you will have to tell the container which node to use.   For a more detailed look at the Tailscale docker image, refer to [this official guide](https://tailscale.com/kb/1282/docker).
 
 
-```yaml
+
+{{< codeblock lang="yaml" >}}
   #####################################################################################
   # Tailscale Container
   #####################################################################################
@@ -50,23 +51,24 @@ Now we will create the compose.yaml file. This file will contain the configurati
                   --exit-node=<EXIT_NODE_TS_IP>
                   --exit-node-allow-lan-access
                   --accept-dns=true
-```
+{{< /codeblock >}}
 
 
 
 ## Second Container
 Yay! We are now able to set the network_mode flag in a second container to "service:tailscale" to route traffic through the Tailscale container. Once the tailscale container is built, you can run the following command to view the status of your connected nodes. 
-```bash
+{{< codeblock lang="bash" >}}
 docker exec tailscale tailscale status
+{{< /codeblock >}}
 
 
-```
-
-```yaml
+{{< codeblock lang="yaml" >}}
     network_mode: "service:tailscale"
     depends_on:
       - tailscale
-```
+{{< /codeblock >}}
+
+
 
 To take it a step further, I recommend looking into the [Headscale](https://github.com/juanfont/headscale)
  project. This project allows you to self-host the Tailscale control plane. 

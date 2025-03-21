@@ -1,0 +1,7 @@
+<div class="code-wrapper">
+    <button class="copy-button">Copy</button>
+    {{ $lang := .Get "lang" | default "plaintext" }}
+    {{ highlight .Inner $lang "" | safeHTML }}
+  </div>
+  
+  

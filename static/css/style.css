@@ -26,15 +26,56 @@ body {
 }
 
 
-pre {
-    background-color: #222; 
-    color: #eaeaea; 
-    padding: 1.5rem; 
-    border-radius: 10px; 
-    overflow-x: auto; 
-    margin: 1.5rem auto; 
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
-}
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem auto;
+    border-radius: 10px;
+    background-color: #222;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    padding: 1.5rem;
+    overflow-x: auto; /* Scroll if lines are too long */
+    color: #eaeaea;
+  }
+  
+  .code-wrapper pre {
+    margin: 0;
+    padding: 0;
+    background: none;
+  }
+  
+  .code-wrapper code {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.9rem;
+    color: inherit;
+    white-space: pre; /* No wrapping by default */
+  }
+  
+  /* For smaller screens, wrap lines if desired */
+  @media (max-width: 768px) {
+    .code-wrapper code {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  }
+  
+  .copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #444;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    transition: background 0.3s ease;
+  }
+  
+  .copy-button:hover {
+    background: #666;
+  }
+  
 
 code {
     font-family: "JetBrains Mono", "Fira Code", monospace; 
@@ -200,10 +241,18 @@ h1 {
     justify-content: center;
 }
 
-#image-wrapper img {
+/* Styling for Kirby GIF */
+#image-wrapper img.kirby {
     width: 100px;
     height: 100px;
 }
+
+/* Styling for Metaknight GIF */
+#image-wrapper img.metaknight {
+    width: 270px;
+    height: 170px;
+}
+
 
 .center-text {
     color: rgb(87, 83, 83);

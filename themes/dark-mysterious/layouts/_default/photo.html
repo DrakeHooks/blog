@@ -22,7 +22,7 @@
             </a>
         </nav>
         <div id="image-wrapper">
-            <img src="{{ "images/kirby.gif" | relURL }}" alt="Title image">
+          <img id="random-image" src="" alt="Title image">
         </div>
     </div>
 
@@ -53,5 +53,25 @@
             <a href="https://gohugo.io" class="footer-text">Hugo</a>
         </p>
     </div>
+    
+    <!-- Client-Side Randomization Script -->
+    <script>
+      // List of image URLs (Hugo will resolve the paths)
+      var images = [
+        '{{ "images/metaknight.gif" | relURL }}',
+        '{{ "images/kirby.gif" | relURL }}'
+      ];
+      // Randomly select one (50/50 chance)
+      var randomImage = images[Math.floor(Math.random() * images.length)];
+      // Set the src attribute of the image tag
+      var randomImageElem = document.getElementById("random-image");
+      randomImageElem.src = randomImage;
+      // Add a class based on the selected image
+      if (randomImage.indexOf("kirby.gif") !== -1) {
+        randomImageElem.classList.add("kirby");
+      } else if (randomImage.indexOf("metaknight.gif") !== -1) {
+        randomImageElem.classList.add("metaknight");
+      }
+    </script>
 </body>
 </html>
