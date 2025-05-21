@@ -2,18 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on Drake Hooks</title>
-    <link>http://localhost:1313/tags/android/</link>
+    <link>https://blog.drakehooks.net/tags/android/</link>
     <description>Recent content in Android on Drake Hooks</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 21 May 2025 16:00:00 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.drakehooks.net/tags/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mapping Cancer Markers with World Community Grid</title>
-      <link>http://localhost:1313/posts/mapping-cancer-markers/</link>
+      <link>https://blog.drakehooks.net/posts/mapping-cancer-markers/</link>
       <pubDate>Wed, 21 May 2025 16:00:00 -0400</pubDate>
-      <guid>http://localhost:1313/posts/mapping-cancer-markers/</guid>
+      <guid>https://blog.drakehooks.net/posts/mapping-cancer-markers/</guid>
       <description>Introduction For the past 5 years, I have profited from using old smartphones to sell 2FA SMS codes, mobile telemetry data, and by serving ads. In this post, we will explore another way to utilize old hardware: contributing to cancer research through the World Community Grid.&#xA;This post is less of a guide and more to bring awareness to the project. If you have an old smartphone in a drawer, consider running the BOINC project on it.</description>
+    </item>
+    <item>
+      <title>Tailscale Containerized as network_mode</title>
+      <link>https://blog.drakehooks.net/posts/tailscale-containerized/</link>
+      <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
+      <guid>https://blog.drakehooks.net/posts/tailscale-containerized/</guid>
+      <description>Introduction The network_mode flag in Docker allows you to specify the networking mode for a container. The use cases for this are extensive. For my use case, I wanted to pass in a phone&amp;rsquo;s LTE network as a way to have a second public IP address for another docker service. The objective is to have two containers. One being the Tailscale container (configured in compose.yaml) and the container we want to set network_mode: &amp;ldquo;service:tailscale&amp;rdquo; as.</description>
     </item>
   </channel>
 </rss>

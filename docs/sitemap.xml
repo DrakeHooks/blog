@@ -2,69 +2,69 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/cancer-research/</loc>
+    <loc>https://blog.drakehooks.net/tags/android/</loc>
     <lastmod>2025-05-21T16:00:00-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/distributed-computing/</loc>
+    <loc>https://blog.drakehooks.net/tags/cancer-research/</loc>
     <lastmod>2025-05-21T16:00:00-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://blog.drakehooks.net/tags/distributed-computing/</loc>
     <lastmod>2025-05-21T16:00:00-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/mapping-cancer-markers/</loc>
+    <loc>https://blog.drakehooks.net/</loc>
     <lastmod>2025-05-21T16:00:00-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mobile/</loc>
+    <loc>https://blog.drakehooks.net/posts/mapping-cancer-markers/</loc>
     <lastmod>2025-05-21T16:00:00-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://blog.drakehooks.net/posts/</loc>
     <lastmod>2025-05-21T16:00:00-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://blog.drakehooks.net/legal/</loc>
     <lastmod>2025-05-21T16:00:00-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/volunteer/</loc>
+    <loc>https://blog.drakehooks.net/tags/</loc>
     <lastmod>2025-05-21T16:00:00-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ansible/</loc>
+    <loc>https://blog.drakehooks.net/tags/volunteer/</loc>
+    <lastmod>2025-05-21T16:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://blog.drakehooks.net/tags/ansible/</loc>
     <lastmod>2025-03-20T20:25:05-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cloudflare/</loc>
+    <loc>https://blog.drakehooks.net/tags/cloudflare/</loc>
     <lastmod>2025-03-20T20:25:05-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/exposing-services-nginx-ansible-cloudflare/</loc>
+    <loc>https://blog.drakehooks.net/posts/exposing-services-nginx-ansible-cloudflare/</loc>
     <lastmod>2025-03-20T20:25:05-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/networking/</loc>
+    <loc>https://blog.drakehooks.net/tags/networking/</loc>
     <lastmod>2025-03-20T20:25:05-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/nginx/</loc>
+    <loc>https://blog.drakehooks.net/tags/nginx/</loc>
     <lastmod>2025-03-20T20:25:05-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/docker/</loc>
+    <loc>https://blog.drakehooks.net/tags/docker/</loc>
     <lastmod>2025-02-05T12:40:17-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/tailscale/</loc>
+    <loc>https://blog.drakehooks.net/tags/tailscale/</loc>
     <lastmod>2025-02-05T12:40:17-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/tailscale-containerized/</loc>
+    <loc>https://blog.drakehooks.net/posts/tailscale-containerized/</loc>
     <lastmod>2025-02-05T12:40:17-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/legal/</loc>
-    <lastmod>2024-11-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/automation/</loc>
+    <loc>https://blog.drakehooks.net/tags/automation/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/pentesting-with-selenium-webdriver/</loc>
+    <loc>https://blog.drakehooks.net/posts/pentesting-with-selenium-webdriver/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/reverse-engineering/</loc>
+    <loc>https://blog.drakehooks.net/tags/reverse-engineering/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/selenium/</loc>
+    <loc>https://blog.drakehooks.net/tags/selenium/</loc>
     <lastmod>2024-11-27T05:36:29-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://blog.drakehooks.net/categories/</loc>
   </url>
 </urlset>
