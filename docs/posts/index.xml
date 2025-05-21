@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Drake Hooks</title>
-    <link>https://blog.drakehooks.net/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Drake Hooks</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Mar 2025 20:25:05 -0500</lastBuildDate>
-    <atom:link href="https://blog.drakehooks.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 May 2025 16:00:00 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mapping Cancer Markers with World Community Grid</title>
+      <link>http://localhost:1313/posts/mapping-cancer-markers/</link>
+      <pubDate>Wed, 21 May 2025 16:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/posts/mapping-cancer-markers/</guid>
+      <description>Introduction For the past 5 years, I have profited from using old smartphones to sell 2FA SMS codes, mobile telemetry data, and by serving ads. In this post, we will explore another way to utilize old hardware: contributing to cancer research through the World Community Grid.&#xA;This post is less of a guide and more to bring awareness to the project. If you have an old smartphone in a drawer, consider running the BOINC project on it.</description>
+    </item>
     <item>
       <title>Exposing services with Nginx, Ansible, and Cloudflare</title>
-      <link>https://blog.drakehooks.net/posts/exposing-services-nginx-ansible-cloudflare/</link>
+      <link>http://localhost:1313/posts/exposing-services-nginx-ansible-cloudflare/</link>
       <pubDate>Thu, 20 Mar 2025 20:25:05 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/posts/exposing-services-nginx-ansible-cloudflare/</guid>
+      <guid>http://localhost:1313/posts/exposing-services-nginx-ansible-cloudflare/</guid>
       <description>Introduction Exposing services on the internet can be a daunting task. In this post, we will explore how to expose services using Nginx, Ansible, and Cloudflare. We will use Nginx as a reverse proxy to route traffic to our services, Ansible to automate the configuration of our server, and Cloudflare to manage our DNS records and provide SSL certificates.&#xA;Pre-requisites Before we begin, you will need the following:&#xA;Domain name. This guide is written with the assumption that you have a domain name registered with Cloudflare, but you can adapt it to work with other DNS providers.</description>
     </item>
     <item>
       <title>Tailscale Containerized as network_mode</title>
-      <link>https://blog.drakehooks.net/posts/tailscale-containerized/</link>
+      <link>http://localhost:1313/posts/tailscale-containerized/</link>
       <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/posts/tailscale-containerized/</guid>
+      <guid>http://localhost:1313/posts/tailscale-containerized/</guid>
       <description>Introduction The network_mode flag in Docker allows you to specify the networking mode for a container. The use cases for this are extensive. For my use case, I wanted to pass in a phone&amp;rsquo;s LTE network as a way to have a second public IP address for another docker service. The objective is to have two containers. One being the Tailscale container (configured in compose.yaml) and the container we want to set network_mode: &amp;ldquo;service:tailscale&amp;rdquo; as.</description>
     </item>
     <item>
-      <title>photo</title>
-      <link>https://blog.drakehooks.net/photo/</link>
-      <pubDate>Thu, 28 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://blog.drakehooks.net/photo/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Pentesting with Selenium WebDriver</title>
-      <link>https://blog.drakehooks.net/posts/pentesting-with-selenium-webdriver/</link>
+      <link>http://localhost:1313/posts/pentesting-with-selenium-webdriver/</link>
       <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/posts/pentesting-with-selenium-webdriver/</guid>
+      <guid>http://localhost:1313/posts/pentesting-with-selenium-webdriver/</guid>
       <description>Introduction Selenium combined with chromium is a powerful tool for pentesting web applications. In this post, we will explore how to use Selenium WebDriver with a custom chromium instance to scrape data and execute desired actions. NOTE: This post is for educational purposes only. Always follow the terms of service. 😇&#xA;Background For this post, we will be looking at some code I wrote for pentesting dingdingding.com, a social casino website that offers a daily bonus to its users.</description>
     </item>
   </channel>

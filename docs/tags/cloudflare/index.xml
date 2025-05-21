@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cloudflare on Drake Hooks</title>
-    <link>https://blog.drakehooks.net/tags/cloudflare/</link>
+    <link>http://localhost:1313/tags/cloudflare/</link>
     <description>Recent content in Cloudflare on Drake Hooks</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 20 Mar 2025 20:25:05 -0500</lastBuildDate>
-    <atom:link href="https://blog.drakehooks.net/tags/cloudflare/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/cloudflare/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Exposing services with Nginx, Ansible, and Cloudflare</title>
-      <link>https://blog.drakehooks.net/posts/exposing-services-nginx-ansible-cloudflare/</link>
+      <link>http://localhost:1313/posts/exposing-services-nginx-ansible-cloudflare/</link>
       <pubDate>Thu, 20 Mar 2025 20:25:05 -0500</pubDate>
-      <guid>https://blog.drakehooks.net/posts/exposing-services-nginx-ansible-cloudflare/</guid>
+      <guid>http://localhost:1313/posts/exposing-services-nginx-ansible-cloudflare/</guid>
       <description>Introduction Exposing services on the internet can be a daunting task. In this post, we will explore how to expose services using Nginx, Ansible, and Cloudflare. We will use Nginx as a reverse proxy to route traffic to our services, Ansible to automate the configuration of our server, and Cloudflare to manage our DNS records and provide SSL certificates.&#xA;Pre-requisites Before we begin, you will need the following:&#xA;Domain name. This guide is written with the assumption that you have a domain name registered with Cloudflare, but you can adapt it to work with other DNS providers.</description>
     </item>
   </channel>

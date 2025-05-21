@@ -15,11 +15,11 @@
     <div id="nav-container" class="container">
         <nav id="nav" class="nav justify-content-center">
             <a href="{{ "/posts/" | relURL }}" class="nav-link">posts</a>
-            <a href="{{ "/photo/" | relURL }}" class="nav-link">photo</a>
-                <!-- GitHub Link -->
-                <a href="https://github.com/DrakeHooks" target="_blank" class="nav-link github-link">
-                    <img src="/images/github-logo-white.png" alt="GitHub" class="github-logo">
-                </a>
+            <a href="{{ "/legal/" | relURL }}" class="nav-link">legal</a>
+            <!-- GitHub Link -->
+            <a href="https://github.com/DrakeHooks" target="_blank" class="nav-link github-link">
+                <img src="/images/github-logo-white.png" alt="GitHub" class="github-logo">
+            </a>
         </nav>
         <!-- <div id="image-wrapper">
             <img src="{{ "images/kirby.gif" | relURL }}" alt="Title image">
@@ -31,7 +31,9 @@
         <main>
             <article>
                 <h1 class="h1-special center-text">{{ .Title }}</h1>
-                <p class="center-text">{{ .Date.Format "January 2, 2006" }}</p>
+                {{ if .Params.showDate | default true }}
+                    <p class="center-text">{{ .Date.Format "January 2, 2006" }}</p>
+                {{ end }}
                 <div class="divider" style="margin: 5%"></div>
                 <div class="post-body">
                     {{ .Content }}
@@ -47,8 +49,7 @@
             <a href="https://gohugo.io" class="footer-text">Hugo</a>
         </p>
     </div>
-<script src="{{ "js/copy-code.js" | relURL }}"></script>
 
+    <script src="{{ "js/copy-code.js" | relURL }}"></script>
 </body>
 </html>
-

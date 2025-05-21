@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>World Community Grid on Drake Hooks</title>
+    <link>http://localhost:1313/tags/world-community-grid/</link>
+    <description>Recent content in World Community Grid on Drake Hooks</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 21 May 2025 16:00:00 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/world-community-grid/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mapping Cancer Markers with World Community Grid</title>
+      <link>http://localhost:1313/posts/mapping-cancer-markers/</link>
+      <pubDate>Wed, 21 May 2025 16:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/posts/mapping-cancer-markers/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

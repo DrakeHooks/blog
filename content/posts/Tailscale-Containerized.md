@@ -1,7 +1,7 @@
 +++
 title = 'Tailscale Containerized as network_mode'
 date = 2025-02-05T12:40:17-05:00
-tags = ["docker", "tailscale", "networking"]
+tags = ["docker", "tailscale", "networking", "android"]
 +++
 
 
@@ -27,10 +27,9 @@ Now we will create the compose.yaml file. This file will contain the configurati
 
 
 {{< codeblock lang="yaml" >}}
-  #####################################################################################
+  #####################################
   # Tailscale Container
-  #####################################################################################
-  services:
+  #####################################
 
     tailscale:
     image: tailscale/tailscale:latest
