@@ -1,0 +1,59 @@
+{{- $rawLang := "" -}}
+{{- if .IsNamedParams -}}
+  {{- $rawLang = .Get "lang" | default "" -}}
+{{- else -}}
+  {{- $rawLang = .Get 0 | default "" -}}
+{{- end -}}
+
+{{- $rawLang = lower $rawLang -}}
+
+{{- $langMap := dict
+  "js" "javascript"
+  "ts" "typescript"
+  "py" "python"
+  "sh" "bash"
+  "shell" "bash"
+  "zsh" "bash"
+  "htm" "html"
+  "yml" "yaml"
+  "md" "markdown"
+-}}
+
+{{- $lang := $rawLang -}}
+{{- with index $langMap $rawLang -}}
+  {{- $lang = . -}}
+{{- end -}}
+
+{{- $label := cond (ne $lang "") (upper $lang) "CODE" -}}
+{{- $code := trim .Inner "\r\n" -}}
+{{- $id := printf "codeblock-%d" now.UnixNano -}}
+
+<figure class="codeframe">
+  <figcaption class="codeframe__bar">
+    <div class="codeframe__meta" aria-hidden="true">
+      <span class="codeframe__dot"></span>
+      <span class="codeframe__dot"></span>
+      <span class="codeframe__dot"></span>
+    </div>
+
+    <span class="codeframe__lang">
+      {{- if eq $lang "" -}}code{{- else -}}{{- $lang -}}{{- end -}}
+    </span>
+
+    <button
+      class="codeframe__copy"
+      type="button"
+      data-copy-target="{{ $id }}"
+      aria-label="Copy code block to clipboard">
+      <span class="codeframe__copy-label">Copy</span>
+    </button>
+  </figcaption>
+
+  <div class="codeframe__body" id="{{ $id }}">
+    {{- if $lang -}}
+      {{ highlight $code $lang "linenos=false,tabWidth=2" }}
+    {{- else -}}
+      <pre class="chroma"><code>{{ $code | htmlEscape }}</code></pre>
+    {{- end -}}
+  </div>
+</figure>

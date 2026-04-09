@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <title>Exposing services with Nginx, Ansible, and Cloudflare — ✻ drakeblog</title>
+
+  
+  <link rel="stylesheet" href="../../css/site.min.a3566a8e2ac2ea17e97bfb73d6be40bf6b30fbaeb55e4be480225ade10bd0508.css">
+
+  <script>
+    (() => {
+      const saved = localStorage.getItem("theme");
+      const systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = saved || (systemDark ? "dark" : "light");
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+</head>
+
+<body class="posts page" data-page="exposing-services-nginx-ansible-cloudflare">
+  
+  <a class="skiplink" href="#main">Skip to main content</a>
+
+  <aside class="nav" aria-label="Site navigation">
+    <div class="nav__brand">
+      
+      <a class="nav__title" href="../../">✽ drakeblog</a>
+
+      <div class="nav__actions">
+        <button
+          class="nav__icon"
+          id="menuToggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="panel-menu"
+          aria-expanded="false"
+          data-panel="panel-menu"
+        ><span aria-hidden="true">☰</span></button>
+      </div>
+    </div>
+
+    <nav class="nav__links nav__links--desktop" aria-label="Primary">
+      <a class="nav__link" href="../../legal/">legal</a>
+      <a class="nav__link" href="../../info/">info</a>
+    </nav>
+
+    <div class="nav__footer" aria-label="Footer">
+      <button
+        class="theme-text"
+        type="button"
+        role="switch"
+        aria-label="Toggle theme"
+        aria-checked="false"
+        data-theme-toggle
+      >theme</button>
+
+      <span class="nav__copyright">© 2026</span>
+    </div>
+  </aside>
+
+  <section class="panels" aria-label="Panels">
+    <div class="panel" id="panel-menu" aria-hidden="true" inert>
+      <div class="panel__head">
+        <div>menu</div>
+        <button class="panel__close" data-close type="button" aria-label="Close panel">×</button>
+      </div>
+
+      <div class="panel__body">
+        <a class="nav__link" href="../../legal/">legal</a>
+        <a class="nav__link" href="../../info/">info</a>
+
+        <div class="panel__spacer"></div>
+
+        <div class="panel__bottomrow" aria-label="Theme and copyright">
+          <button
+            class="theme-text"
+            type="button"
+            role="switch"
+            aria-label="Toggle theme"
+            aria-checked="false"
+            data-theme-toggle
+          >theme</button>
+
+          <div class="panel__copyright">© 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="main" id="main" tabindex="-1">
+
+    
+    
+
+    
+<article class="prose">
+  <header class="pagehead">
+    <div class="pagehead__kicker">
+      
+        March 20, 2025
+      
+    </div>
+
+    <h1 class="pagehead__title">Exposing services with Nginx, Ansible, and Cloudflare</h1>
+
+    <div class="pagehead__rule"></div>
+  </header>
+
+  <div class="prose">
+    <h2 id="introduction">Introduction</h2>
+<p>Exposing services on the internet can be a daunting task. In this post, we will explore how to expose services using Nginx, Ansible, and Cloudflare. We will use Nginx as a reverse proxy to route traffic to our services, Ansible to automate the configuration of our server, and Cloudflare to manage our DNS records and provide SSL certificates.</p>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<p>Before we begin, you will need the following:</p>
+<ul>
+<li>Domain name. This guide is written with the assumption that you have a domain name registered with Cloudflare, but you can adapt it to work with other DNS providers.</li>
+<li>Access to port forwarding on your router. You will need to forward ports 80 and 443 of the server/container/VM running Nginx.</li>
+<li>Self hosted service you would like to expose. For this guide, I used Syncthing.</li>
+<li>Nginx installed (Make sure you are running nginx as a service, and not nginx reverse proxy manager with GUI.)</li>
+<li>Ansible installed on control node. This setup has ansible installed on a host proxmox server and runs the playbook for a container with the hostname <code>nginx</code>. The inventory file for ansible is what tells ansible which host to run the playbook on.</li>
+</ul>
+<h2 id="cloudflare-dns-records">Cloudflare DNS records</h2>
+<p>After you have forwarded ports 80 and 443 on your router, you should create a DNS record for your domain. I simply made an <code>A</code> record with the name <code>syncthing</code> and pointed it to my server&rsquo;s public IP address. This means that when someone visits <code>syncthing.my-domain.com</code>, they will be directed to the syncthing login page.</p>
+<h2 id="ansible-playbook">Ansible Playbook</h2>
+<p>The most important part of this setup is the Ansible playbook. This playbook will install Nginx, configure it as a reverse proxy, and set up SSL certificates using Let&rsquo;s Encrypt.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up Nginx with SSL for Syncthing using Cloudflare DNS challenge</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">vars</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Replace with your custom domain</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">syncthing_domain</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;your-domain.com&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Replace with your Syncthing IP  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">syncthing_ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;192.168.86.208&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">syncthing_port</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;8384&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Replace with your Cloudflare email</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cloudflare_email</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;your-cloudflare-email@example.com&#34;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Replace with your Cloudflare API token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cloudflare_api_key</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;YOUR_CLOUDFLARE_API_TOKEN&#34;</span><span class="w">         
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cloudflare_credentials_path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/root/.secrets/cloudflare.ini&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install required packages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">apk</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="l">nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="l">certbot</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="l">certbot-nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="l">certbot-dns-cloudflare</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">update_cache</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">notify</span><span class="p">:</span><span class="w"> </span><span class="l">restart nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Create Cloudflare API credentials file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">copy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ cloudflare_credentials_path }}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          dns_cloudflare_email = {{ cloudflare_email }}
+</span></span></span><span class="line"><span class="cl"><span class="sd">          dns_cloudflare_api_key = {{ cloudflare_api_key }}</span><span class="w">          
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0600&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Ensure web root exists for Certbot challenge</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">file</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/var/www/certbot</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l">directory</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0755&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Obtain SSL certificate for Syncthing</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">        certbot certonly --dns-cloudflare
+</span></span></span><span class="line"><span class="cl"><span class="sd">        --dns-cloudflare-credentials {{ cloudflare_credentials_path }}
+</span></span></span><span class="line"><span class="cl"><span class="sd">        -d {{ syncthing_domain }} --non-interactive --agree-tos --email your-email@example.com</span><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">args</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">creates</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/etc/letsencrypt/live/{{ syncthing_domain }}/fullchain.pem&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">notify</span><span class="p">:</span><span class="w"> </span><span class="l">restart nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy Nginx configuration for Syncthing (HTTP)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">copy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l">/etc/nginx/http.d/syncthing.conf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          server {
+</span></span></span><span class="line"><span class="cl"><span class="sd">              listen 80;
+</span></span></span><span class="line"><span class="cl"><span class="sd">              server_name {{ syncthing_domain }};
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">              location /.well-known/acme-challenge/ {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  root /var/www/certbot;
+</span></span></span><span class="line"><span class="cl"><span class="sd">              }
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">              location / {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  return 301 https://$host$request_uri;
+</span></span></span><span class="line"><span class="cl"><span class="sd">              }
+</span></span></span><span class="line"><span class="cl"><span class="sd">          }</span><span class="w">          
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">notify</span><span class="p">:</span><span class="w"> </span><span class="l">restart nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy Nginx SSL configuration for Syncthing (HTTPS)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">copy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l">/etc/nginx/http.d/syncthing-ssl.conf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          server {
+</span></span></span><span class="line"><span class="cl"><span class="sd">              listen 443 ssl;
+</span></span></span><span class="line"><span class="cl"><span class="sd">              server_name {{ syncthing_domain }};
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">              ssl_certificate /etc/letsencrypt/live/{{ syncthing_domain }}/fullchain.pem;
+</span></span></span><span class="line"><span class="cl"><span class="sd">              ssl_certificate_key /etc/letsencrypt/live/{{ syncthing_domain }}/privkey.pem;
+</span></span></span><span class="line"><span class="cl"><span class="sd">              include /etc/letsencrypt/options-ssl-nginx.conf;
+</span></span></span><span class="line"><span class="cl"><span class="sd">              ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">              location / {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  proxy_pass http://{{ syncthing_ip }}:{{ syncthing_port }}/;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  proxy_set_header Host $host;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  proxy_set_header X-Real-IP $remote_addr;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  proxy_set_header X-Forwarded-Proto $scheme;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  proxy_redirect off;
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  proxy_buffering off;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  proxy_set_header Upgrade $http_upgrade;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  proxy_set_header Connection &#34;upgrade&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="sd">              }
+</span></span></span><span class="line"><span class="cl"><span class="sd">          }</span><span class="w">          
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">notify</span><span class="p">:</span><span class="w"> </span><span class="l">restart nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Ensure Nginx is running</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l">started</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">handlers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">restart nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">nginx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l">restarted</span><span class="w">
+</span></span></span></code></pre></div><h2 id="ansible-playbook-continued">Ansible Playbook (continued)</h2>
+<p>This is the command to run the playbook we created above. You should only have to run it once, and it will configure Nginx to serve your service over HTTPS.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-playbook -u ansible nginx-playbook.yml
+</span></span></code></pre></div><h2 id="server-configuration">Server Configuration</h2>
+<p>This playbook runs on my host server connected to a container with the hostname <code>nginx</code>.
+Below is a diagram of my exact setup.</p>
+<p><img src="../../images/diagram.png" alt="Network Diagram"></p>
+<p>Now that the playbook is created, we should ensure that the nginx service starts automatically on boot. I am running this playbook on Alpine linux so the exact command may vary depending on your distribution.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rc-update add nginx
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>If you followed this guide, syncthing should now be accessible at <code>https://syncthing.your-domain.com</code> with a valid SSL certificate. This setup is secure, automated, and scalable. You can easily add more services by creating additional Nginx configurations and running the playbook again.</p>
+
+  </div>
+</article>
+
+
+<script src="../../js/copy-code.js" defer></script>
+
+  </main>
+
+  
+  <script src="../../js/panels.min.e4adbaf785c07d05e36db0ee398796b7f2011938bde0310c3e227bc7e6dcd627.js" defer></script>
+  <script src="../../js/code-copy.js" defer></script>
+
+</body>
+</html>

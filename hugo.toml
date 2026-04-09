@@ -1,16 +1,21 @@
-baseURL = 'https://blog.drakehooks.net/'
+baseURL = "https://blog.drakehooks.net"
 relativeURLs = true
 canonifyURLs = true
-contentDir = 'content'
-publishDir = "docs"
-languageCode = 'en-us'
-title = 'Drake Hooks'
-theme = 'dark-mysterious'
+contentDir = "content"
+publishDir = "public"
+languageCode = "en-us"
+title = "✻ drakeblog"
 
 [markup]
   [markup.highlight]
-    style = "darkula"  # or another theme like "monokai", "github", etc.
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    lineNumbersInTable = false
+    tabWidth = 2
+    style = "dracula"
 
-
-[params]
-frontimage = "assets/kirby.gif"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

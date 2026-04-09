@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <title>WCAG 2.2, Design, and Modern UI — ✻ drakeblog</title>
+
+  
+  <link rel="stylesheet" href="../../css/site.min.a3566a8e2ac2ea17e97bfb73d6be40bf6b30fbaeb55e4be480225ade10bd0508.css">
+
+  <script>
+    (() => {
+      const saved = localStorage.getItem("theme");
+      const systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = saved || (systemDark ? "dark" : "light");
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+</head>
+
+<body class="posts page" data-page="design-wcag-modern-ui">
+  
+  <a class="skiplink" href="#main">Skip to main content</a>
+
+  <aside class="nav" aria-label="Site navigation">
+    <div class="nav__brand">
+      
+      <a class="nav__title" href="../../">✽ drakeblog</a>
+
+      <div class="nav__actions">
+        <button
+          class="nav__icon"
+          id="menuToggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="panel-menu"
+          aria-expanded="false"
+          data-panel="panel-menu"
+        ><span aria-hidden="true">☰</span></button>
+      </div>
+    </div>
+
+    <nav class="nav__links nav__links--desktop" aria-label="Primary">
+      <a class="nav__link" href="../../legal/">legal</a>
+      <a class="nav__link" href="../../info/">info</a>
+    </nav>
+
+    <div class="nav__footer" aria-label="Footer">
+      <button
+        class="theme-text"
+        type="button"
+        role="switch"
+        aria-label="Toggle theme"
+        aria-checked="false"
+        data-theme-toggle
+      >theme</button>
+
+      <span class="nav__copyright">© 2026</span>
+    </div>
+  </aside>
+
+  <section class="panels" aria-label="Panels">
+    <div class="panel" id="panel-menu" aria-hidden="true" inert>
+      <div class="panel__head">
+        <div>menu</div>
+        <button class="panel__close" data-close type="button" aria-label="Close panel">×</button>
+      </div>
+
+      <div class="panel__body">
+        <a class="nav__link" href="../../legal/">legal</a>
+        <a class="nav__link" href="../../info/">info</a>
+
+        <div class="panel__spacer"></div>
+
+        <div class="panel__bottomrow" aria-label="Theme and copyright">
+          <button
+            class="theme-text"
+            type="button"
+            role="switch"
+            aria-label="Toggle theme"
+            aria-checked="false"
+            data-theme-toggle
+          >theme</button>
+
+          <div class="panel__copyright">© 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="main" id="main" tabindex="-1">
+
+    
+    
+
+    
+<article class="prose">
+  <header class="pagehead">
+    <div class="pagehead__kicker">
+      
+        December 15, 2025
+      
+    </div>
+
+    <h1 class="pagehead__title">WCAG 2.2, Design, and Modern UI</h1>
+
+    <div class="pagehead__rule"></div>
+  </header>
+
+  <div class="prose">
+    <h2 id="accessibility-as-design">Accessibility as Design</h2>
+<p>Web Accessibility is often overlooked in modern web development. With the advent of LLMs for web design or &ldquo;vibecoding&rdquo;, the results are often large  elements and typography, and carousels that are distracting. From my point of view, so much web design and writing is becoming homogenized and dishonest. Poor accessibility is now a facet of so many websites that were drafted quickly from generative ai. There are now countless examples of websites failing to meet basic accessibility standards. These are 8 and 9 figure <a href="https://topclassactions.com/lawsuit-settlements/lawsuit-news/skims-class-action-alleges-website-blocks-access-for-visually-impaired/">businesses</a> with entire teams for user experience. Observing this made me realize that I should audit my own work as best as I can. I am by no means an expert or arbiter of web accessibility. In fact, this post serves as my own reminder to meet every guideline of WCAG 2.2 and refresh my own design.  In my own design, I want to create a peaceful and inviting reading experience. User defined customization is another relevant area of discussion in UI design right now. For WCAG, user defined customization is great, but should not be required of the user.</p>
+<p>Accesibility should be the design itself and that is what I have focused my efforts on. It is also a misconception that just meeting WCAG is enough. Design is always evolving and so is web-accesibility.</p>
+<h2 id="meeting-wcag-is-not-enough">Meeting WCAG is not enough</h2>
+<p>Simply running a given site through an online checker is not enough. Instead,
+a more proactive approach of consistent, compliant design and readable, maintainable code is necessary. It can be challenging when something looks accessibile, but is failing at the &ldquo;Operable&rdquo; level. Every element on this particular website should be operable now. The blog can now be interacted with by a wider variety of user agents and assistive technologies (i.e screen-readers).</p>
+<p>Below, I have created a checklist of how I am personally implementing WCAG 2.2
+through all of my design of this blog.</p>
+<p>*<em>Note: For these changes, I am using WCAG&rsquo;s structure Perceivable, Operable, Understandable, Robust. (POUR) This is not in any way an effort to meet full AAA compliance. This checklist reflects changes made to this site to meet WCAG 2.2 Level AA</em></p>
+<ol>
+<li>Escape key closes all navigation.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">    <span class="c1">// -------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// Escape closes all navigation panels
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// -------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;keydown&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="o">===</span> <span class="s2">&#34;Escape&#34;</span><span class="p">)</span> <span class="nx">closeAll</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><ol start="2">
+<li>Semantic button elements for keyboard &amp; screen-reader users</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">    <span class="c">&lt;!---------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="c">    Semantic elements in mobile menu--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!---------------------------------&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;nav__icon&#34;</span> <span class="na">data-panel</span><span class="o">=</span><span class="s">&#34;panel-menu&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Open menu&#34;</span><span class="p">&gt;</span>☰<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span></code></pre></div><ol start="3">
+<li>No surprise navigation. The inert attribute guarantees that no keyboard focus or a screen-reader can accidentally hit the closed menu.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">section</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;panels&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Panels&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;panel&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;panel-menu&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span> <span class="na">inert</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;panel__head&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>menu<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;panel__close&#34;</span> <span class="na">data-close</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Close panel&#34;</span><span class="p">&gt;</span>×<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span></code></pre></div><ol start="4">
+<li>Verified text contrast meets WCAG 2.2 AA (4.5:1 for body text, 3:1 for large text)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl">   <span class="c">/* Light — #111111 on #ffffff = 18.1:1 */</span>
+</span></span><span class="line"><span class="cl">   <span class="p">:</span><span class="nd">root</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="nv">--bg</span><span class="p">:</span><span class="mh">#ffffff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">     <span class="nv">--fg</span><span class="p">:</span><span class="mh">#111111</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">     <span class="nv">--muted</span><span class="p">:</span><span class="mh">#6f6f6f</span><span class="p">;</span> <span class="c">/* 5.74:1 — meets AA for large text */</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="c">/* Dark — #f2f2f2 on #0d0d0d = 18.6:1 */</span>
+</span></span><span class="line"><span class="cl">   <span class="p">:</span><span class="nd">root</span><span class="o">[</span><span class="nt">data-theme</span><span class="o">=</span><span class="s2">&#34;dark&#34;</span><span class="o">]</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="nv">--bg</span><span class="p">:</span><span class="mh">#0d0d0d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">     <span class="nv">--fg</span><span class="p">:</span><span class="mh">#f2f2f2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">     <span class="nv">--muted</span><span class="p">:</span><span class="mh">#b8b8b8</span><span class="p">;</span> <span class="c">/* 7.35:1 — meets AA */</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span></code></pre></div><ol start="5">
+<li>Focus Visible</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* ───────────────────────────────────────────────────────────
+</span></span></span><span class="line"><span class="cl"><span class="c">   Focus Visible
+</span></span></span><span class="line"><span class="cl"><span class="c">   ─────────────────────────────────────────────────────────── */</span>
+</span></span><span class="line"><span class="cl"><span class="p">:</span><span class="nd">focus-visible</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">outline</span><span class="p">:</span><span class="mi">2</span><span class="kt">px</span> <span class="kc">solid</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">fg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">outline-offset</span><span class="p">:</span><span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol start="6">
+<li>Skip to main content</li>
+</ol>
+<p>This satisfies WCAG 2.2 – 2.4.1 (Bypass Blocks).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;skiplink&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#main&#34;</span><span class="p">&gt;</span>Skip to main content<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">main</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;main&#34;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&#34;-1&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- page content --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+</span></span></code></pre></div><h2 id="editorial-and-compliant">Editorial and Compliant</h2>
+<p>Some changes may actually be in compliance to WCAG while still maintaining an editorial feel. For example, I recently changed the selection or highlight of selected text. I appreciate attention to details like this that make the design feel distinct. I was surprised when I learned that this change was still in compliance, as they are at a ratio of ~11:1. While there is no specific rule for ::selection pseudo element, contrast minimums still applies to text readability. Another recent choice in this direction is to left align all contents on desktop view.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* Text selection highlight
+</span></span></span><span class="line"><span class="cl"><span class="c">   Maintains ~11:1 contrast ratio for readability */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">::</span><span class="nd">selection</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">background</span><span class="p">:</span><span class="mh">#b8b8b2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span><span class="mh">#000000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">::</span><span class="nd">-moz-selection</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">background</span><span class="p">:</span><span class="mh">#b8b8b2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span><span class="mh">#000000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="compliance-testing">Compliance Testing</h2>
+<p>Automated testing can be good at catching the low-hanging fruit, but actually making changes like manual keyboard navigation is what makes our site accessible. For automated testing, I have opted to use Axe Dev Tools chrome <a href="https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US">extension</a>. The extension will run a full page scan to test for wcag 2.2+ compliance. There are plenty of alternatives, and some may be able to spot issues better than others. In my experience, the online checkers are mostly a sales funnel for paid solutions. It is disheartening when resources for something so important are held behind paywalls. The best way to test a website for accessibility is manually with real users who have those needs. For these reasons, I will likely make improving web accessibility a series of blog posts.</p>
+<p>The image below is after running a scan on the homepage, which came back with one error for ensuring a level-one heading.
+<img
+src="../../photos/blogimages/homepage.png"
+alt="Errors found on homepage"
+class="post-image"></p>
+<p>After fixing the issue above, I ran another scan on the posts themselves and received zero errors.
+<img
+src="../../photos/blogimages/poststest.png"
+alt="Zero accessibility errors found on blog post scan"
+class="post-image"></p>
+<p>I want to re-iterate that running automated tests or meeting WCAG is not enough. Manual testing with real users will always be the best method for compliance testing.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Accessibility is not a checklist to finish. WCAG compliance is a baseline, not a finish line. As always, everything here is open source. I have made every effort to lighten the blog and make it easier to navigate through in the repo. As browsers, assistive tech, and user expectations evolve, so will this site.</p>
+
+  </div>
+</article>
+
+
+<script src="../../js/copy-code.js" defer></script>
+
+  </main>
+
+  
+  <script src="../../js/panels.min.e4adbaf785c07d05e36db0ee398796b7f2011938bde0310c3e227bc7e6dcd627.js" defer></script>
+  <script src="../../js/code-copy.js" defer></script>
+
+</body>
+</html>

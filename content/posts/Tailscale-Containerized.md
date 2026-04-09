@@ -16,8 +16,11 @@ The network_mode flag in Docker allows you to specify the networking mode for a 
 ## Tailscale Admin Console
 Before creating the container, lets take a look at the Tailscale admin console. The admin console will show the "machines" that are connected to the Tailnet. For android devices acting as exit nodes, you will need to tick the "Use as exit node" box under "Edit route settings". This is not something that can be done within the Tailscale app.
 
-![admin console](/photos/blogimages/tailscale.png)
-
+<img
+  src="/photos/blogimages/tailscale.png"
+  alt="Tailscale admin console"
+  class="post-image">
+  
 ## Container Preparation
 Still in the admin console, we need to get the Tailscale address of the machine to route traffic through. We also need to generate an auth key. This key will be used to authenticate the container without an interactive login. To do this, head to Settings -> Personal Settings -> Keys. Generate the key with the options that best suit your security needs. Also, remember to copy the full key as it will not be shown again.
 
@@ -26,7 +29,7 @@ Now we will create the compose.yaml file. This file will contain the configurati
 
 
 
-{{< codeblock lang="yaml" >}}
+```yaml
   #####################################
   # Tailscale Container
   #####################################
@@ -50,22 +53,22 @@ Now we will create the compose.yaml file. This file will contain the configurati
                   --exit-node=<EXIT_NODE_TS_IP>
                   --exit-node-allow-lan-access
                   --accept-dns=true
-{{< /codeblock >}}
+```
 
 
 
 ## Second Container
 Yay! We are now able to set the network_mode flag in a second container to "service:tailscale" to route traffic through the Tailscale container. Once the tailscale container is built, you can run the following command to view the status of your connected nodes. 
-{{< codeblock lang="bash" >}}
+```bash
 docker exec tailscale tailscale status
-{{< /codeblock >}}
+```
 
 
-{{< codeblock lang="yaml" >}}
+```yaml
     network_mode: "service:tailscale"
     depends_on:
       - tailscale
-{{< /codeblock >}}
+```
 
 
 

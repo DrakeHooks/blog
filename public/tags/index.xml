@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on ✻ drakeblog</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on ✻ drakeblog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Accessibility</title>
+      <link>http://localhost:1313/tags/accessibility/</link>
+      <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/accessibility/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Design</title>
+      <link>http://localhost:1313/tags/design/</link>
+      <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/design/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UI</title>
+      <link>http://localhost:1313/tags/ui/</link>
+      <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ui/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wcag</title>
+      <link>http://localhost:1313/tags/wcag/</link>
+      <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/wcag/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Android</title>
+      <link>http://localhost:1313/tags/android/</link>
+      <pubDate>Wed, 21 May 2025 16:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/tags/android/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cancer Research</title>
+      <link>http://localhost:1313/tags/cancer-research/</link>
+      <pubDate>Wed, 21 May 2025 16:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/tags/cancer-research/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Distributed Computing</title>
+      <link>http://localhost:1313/tags/distributed-computing/</link>
+      <pubDate>Wed, 21 May 2025 16:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/tags/distributed-computing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Volunteer</title>
+      <link>http://localhost:1313/tags/volunteer/</link>
+      <pubDate>Wed, 21 May 2025 16:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/tags/volunteer/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ansible</title>
+      <link>http://localhost:1313/tags/ansible/</link>
+      <pubDate>Thu, 20 Mar 2025 20:25:05 -0500</pubDate>
+      <guid>http://localhost:1313/tags/ansible/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloudflare</title>
+      <link>http://localhost:1313/tags/cloudflare/</link>
+      <pubDate>Thu, 20 Mar 2025 20:25:05 -0500</pubDate>
+      <guid>http://localhost:1313/tags/cloudflare/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Networking</title>
+      <link>http://localhost:1313/tags/networking/</link>
+      <pubDate>Thu, 20 Mar 2025 20:25:05 -0500</pubDate>
+      <guid>http://localhost:1313/tags/networking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nginx</title>
+      <link>http://localhost:1313/tags/nginx/</link>
+      <pubDate>Thu, 20 Mar 2025 20:25:05 -0500</pubDate>
+      <guid>http://localhost:1313/tags/nginx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>http://localhost:1313/tags/docker/</link>
+      <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
+      <guid>http://localhost:1313/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tailscale</title>
+      <link>http://localhost:1313/tags/tailscale/</link>
+      <pubDate>Wed, 05 Feb 2025 12:40:17 -0500</pubDate>
+      <guid>http://localhost:1313/tags/tailscale/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Automation</title>
+      <link>http://localhost:1313/tags/automation/</link>
+      <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
+      <guid>http://localhost:1313/tags/automation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reverse-Engineering</title>
+      <link>http://localhost:1313/tags/reverse-engineering/</link>
+      <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
+      <guid>http://localhost:1313/tags/reverse-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Selenium</title>
+      <link>http://localhost:1313/tags/selenium/</link>
+      <pubDate>Wed, 27 Nov 2024 05:36:29 -0500</pubDate>
+      <guid>http://localhost:1313/tags/selenium/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+{{ define "main" }}
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+
+  <header class="pagehead">
+    <div class="pagehead__kicker">posts</div>
+  </header>
+
+  {{ range $posts.ByDate.Reverse }}
+    <article class="card">
+      <a class="card__link" href="{{ .RelPermalink }}">
+        <h2 class="card__title">
+          <span class="card__title-text">{{ .Title }}</span>
+        </h2>
+
+        {{ if .Date }}
+          <div class="meta">{{ .Date.Format "2006-01-02" }}</div>
+        {{ end }}
+
+        {{ with .Params.tags }}
+          <div class="tags">
+            {{ range . }}
+              <span class="tag">{{ . }}</span>
+            {{ end }}
+          </div>
+        {{ end }}
+      </a>
+    </article>
+  {{ end }}
+{{ end }}

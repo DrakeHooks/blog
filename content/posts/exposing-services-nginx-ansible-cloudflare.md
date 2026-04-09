@@ -24,7 +24,7 @@ After you have forwarded ports 80 and 443 on your router, you should create a DN
 The most important part of this setup is the Ansible playbook. This playbook will install Nginx, configure it as a reverse proxy, and set up SSL certificates using Let's Encrypt. 
 
 
-{{< codeblock lang="yaml" >}}
+```yaml
 ---
 - name: Set up Nginx with SSL for Syncthing using Cloudflare DNS challenge
   hosts: nginx
@@ -133,7 +133,7 @@ The most important part of this setup is the Ansible playbook. This playbook wil
         name: nginx
         state: restarted
 
-{{< /codeblock >}}
+```
 
 
 
@@ -141,9 +141,9 @@ The most important part of this setup is the Ansible playbook. This playbook wil
 ## Ansible Playbook (continued)
 This is the command to run the playbook we created above. You should only have to run it once, and it will configure Nginx to serve your service over HTTPS.
 
-{{< codeblock lang="bash" >}}
+```bash
 ansible-playbook -u ansible nginx-playbook.yml
-{{< /codeblock >}}
+```
 
 
 ## Server Configuration
@@ -154,9 +154,9 @@ Below is a diagram of my exact setup.
 
 Now that the playbook is created, we should ensure that the nginx service starts automatically on boot. I am running this playbook on Alpine linux so the exact command may vary depending on your distribution. 
 
-{{< codeblock lang="bash" >}}
+```bash
 rc-update add nginx
-{{< /codeblock >}}
+```
 
 ## Conclusion
 If you followed this guide, syncthing should now be accessible at `https://syncthing.your-domain.com` with a valid SSL certificate. This setup is secure, automated, and scalable. You can easily add more services by creating additional Nginx configurations and running the playbook again.

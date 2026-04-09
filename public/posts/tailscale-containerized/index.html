@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <title>Tailscale Containerized as network_mode — ✻ drakeblog</title>
+
+  
+  <link rel="stylesheet" href="../../css/site.min.a3566a8e2ac2ea17e97bfb73d6be40bf6b30fbaeb55e4be480225ade10bd0508.css">
+
+  <script>
+    (() => {
+      const saved = localStorage.getItem("theme");
+      const systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = saved || (systemDark ? "dark" : "light");
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+</head>
+
+<body class="posts page" data-page="Tailscale-Containerized">
+  
+  <a class="skiplink" href="#main">Skip to main content</a>
+
+  <aside class="nav" aria-label="Site navigation">
+    <div class="nav__brand">
+      
+      <a class="nav__title" href="../../">✽ drakeblog</a>
+
+      <div class="nav__actions">
+        <button
+          class="nav__icon"
+          id="menuToggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="panel-menu"
+          aria-expanded="false"
+          data-panel="panel-menu"
+        ><span aria-hidden="true">☰</span></button>
+      </div>
+    </div>
+
+    <nav class="nav__links nav__links--desktop" aria-label="Primary">
+      <a class="nav__link" href="../../legal/">legal</a>
+      <a class="nav__link" href="../../info/">info</a>
+    </nav>
+
+    <div class="nav__footer" aria-label="Footer">
+      <button
+        class="theme-text"
+        type="button"
+        role="switch"
+        aria-label="Toggle theme"
+        aria-checked="false"
+        data-theme-toggle
+      >theme</button>
+
+      <span class="nav__copyright">© 2026</span>
+    </div>
+  </aside>
+
+  <section class="panels" aria-label="Panels">
+    <div class="panel" id="panel-menu" aria-hidden="true" inert>
+      <div class="panel__head">
+        <div>menu</div>
+        <button class="panel__close" data-close type="button" aria-label="Close panel">×</button>
+      </div>
+
+      <div class="panel__body">
+        <a class="nav__link" href="../../legal/">legal</a>
+        <a class="nav__link" href="../../info/">info</a>
+
+        <div class="panel__spacer"></div>
+
+        <div class="panel__bottomrow" aria-label="Theme and copyright">
+          <button
+            class="theme-text"
+            type="button"
+            role="switch"
+            aria-label="Toggle theme"
+            aria-checked="false"
+            data-theme-toggle
+          >theme</button>
+
+          <div class="panel__copyright">© 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="main" id="main" tabindex="-1">
+
+    
+    
+
+    
+<article class="prose">
+  <header class="pagehead">
+    <div class="pagehead__kicker">
+      
+        February 5, 2025
+      
+    </div>
+
+    <h1 class="pagehead__title">Tailscale Containerized as network_mode</h1>
+
+    <div class="pagehead__rule"></div>
+  </header>
+
+  <div class="prose">
+    <h2 id="introduction">Introduction</h2>
+<p>The network_mode flag in Docker allows you to specify the networking mode for a container. The use cases for this are extensive. For my use case, I wanted to pass in a phone&rsquo;s LTE network as a way to have a second public IP address for another docker service. The objective is to have two containers. One being the Tailscale container (configured in compose.yaml) and the container we want to set network_mode: &ldquo;service:tailscale&rdquo; as. In this post, we will explore how to run Tailscale containerized as another service&rsquo;s network_mode.</p>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<ul>
+<li>Docker with Docker Compose installed</li>
+<li>A Tailscale account with auth keys</li>
+<li>TUN device accesible with nesting enabled on the host</li>
+</ul>
+<h2 id="tailscale-admin-console">Tailscale Admin Console</h2>
+<p>Before creating the container, lets take a look at the Tailscale admin console. The admin console will show the &ldquo;machines&rdquo; that are connected to the Tailnet. For android devices acting as exit nodes, you will need to tick the &ldquo;Use as exit node&rdquo; box under &ldquo;Edit route settings&rdquo;. This is not something that can be done within the Tailscale app.</p>
+<p><img
+src="../../photos/blogimages/tailscale.png"
+alt="Tailscale admin console"
+class="post-image"></p>
+<h2 id="container-preparation">Container Preparation</h2>
+<p>Still in the admin console, we need to get the Tailscale address of the machine to route traffic through. We also need to generate an auth key. This key will be used to authenticate the container without an interactive login. To do this, head to Settings -&gt; Personal Settings -&gt; Keys. Generate the key with the options that best suit your security needs. Also, remember to copy the full key as it will not be shown again.</p>
+<h2 id="containerized-tailscale">Containerized Tailscale</h2>
+<p>Now we will create the compose.yaml file. This file will contain the configuration for our Tailscale container. While the <code>command:  </code>flag  is optional, it simplifies our setup by telling the container which Tailscale address and auth key to use. If you are not using an exit node, then you will have to tell the container which node to use.   For a more detailed look at the Tailscale docker image, refer to <a href="https://tailscale.com/kb/1282/docker">this official guide</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="c">#####################################</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Tailscale Container</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c">#####################################</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">tailscale</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">tailscale/tailscale:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">tailscale</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">TS_AUTHKEY=&lt;YOUR_AUTH_KEY&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">cap_add</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">NET_ADMIN</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">SYS_MODULE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/var/lib/tailscale:/var/lib/tailscale</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/dev/net/tun:/dev/net/tun</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">      tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/var/run/tailscale/tailscaled.sock &amp;&amp;
+</span></span></span><span class="line"><span class="cl"><span class="sd">      tailscale up --authkey=&lt;YOUR_AUTH_KEY&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  --exit-node=&lt;EXIT_NODE_TS_IP&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  --exit-node-allow-lan-access
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  --accept-dns=true</span><span class="w">      
+</span></span></span></code></pre></div><h2 id="second-container">Second Container</h2>
+<p>Yay! We are now able to set the network_mode flag in a second container to &ldquo;service:tailscale&rdquo; to route traffic through the Tailscale container. Once the tailscale container is built, you can run the following command to view the status of your connected nodes.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> tailscale tailscale status
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;service:tailscale&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">tailscale</span><span class="w">
+</span></span></span></code></pre></div><p>To take it a step further, I recommend looking into the <a href="https://github.com/juanfont/headscale">Headscale</a>
+project. This project allows you to self-host the Tailscale control plane.</p>
+<p>Thanks for reading! 🎉</p>
+
+  </div>
+</article>
+
+
+<script src="../../js/copy-code.js" defer></script>
+
+  </main>
+
+  
+  <script src="../../js/panels.min.e4adbaf785c07d05e36db0ee398796b7f2011938bde0310c3e227bc7e6dcd627.js" defer></script>
+  <script src="../../js/code-copy.js" defer></script>
+
+</body>
+</html>

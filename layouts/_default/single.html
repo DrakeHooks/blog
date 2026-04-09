@@ -1,0 +1,22 @@
+{{ define "main" }}
+<article class="prose">
+  <header class="pagehead">
+    <div class="pagehead__kicker">
+      {{ if .Params.showDate | default true }}
+        {{ .Date.Format "January 2, 2006" }}
+      {{ end }}
+    </div>
+
+    <h1 class="pagehead__title">{{ .Title }}</h1>
+
+    <div class="pagehead__rule"></div>
+  </header>
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</article>
+
+{{/* keep your existing copy button logic if you have /static/js/copy-code.js */}}
+<script src="{{ "js/copy-code.js" | relURL }}" defer></script>
+{{ end }}
