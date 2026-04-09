@@ -615,6 +615,7 @@ pre.chroma ::-moz-selection{
 .chroma .cpf{
   color:var(--code-comment);
   font-style:italic;
+  opacity:.78;
 }
 .chroma .k,
 .chroma .kc,
@@ -894,9 +895,10 @@ div.highlight:hover .code-copy-btn{
   .highlight pre,
   div.highlight pre,
   pre.chroma{
-    padding:1.02rem .98rem 1.08rem !important;
-    font-size:.9rem !important;
-    line-height:1.66 !important;
+    padding:.95rem .9rem 1rem !important;
+    font-size:.85rem !important;
+    line-height:1.6 !important;
+    letter-spacing:-0.01em;
   }
 
   .code-copy-btn{
@@ -1013,20 +1015,20 @@ body[data-page="info"] .info-links a:hover{
   margin:0 0 14px 2px;
 }
 
-/* AFTER */
+/* Lists */
 .main ul,
 .main ol{
-  margin: 16px 0;
-  padding-left: 1.4em;
-  list-style-position: outside;
+  margin:16px 0;
+  padding-left:1.4em;
+  list-style-position:outside;
 }
 
 .main li{
-  margin: 6px 0;
+  margin:6px 0;
 }
 
-.prose li > p {
-  margin-top: 0;
-  margin-bottom: 0;
-  display: inline;
+.prose li > p{
+  margin-top:0;
+  margin-bottom:0;
+  display:inline;
 }
