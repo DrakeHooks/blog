@@ -840,7 +840,7 @@ div.highlight:hover .code-copy-btn{
 
 /* Mobile */
 @media (max-width:767px){
-  :root{--code-bleed:10px}
+  :root{--code-bleed:8px}
 
   body{overflow:auto}
 
@@ -888,26 +888,50 @@ div.highlight:hover .code-copy-btn{
   .highlight,
   div.highlight,
   pre.chroma{
-    margin:1.3rem calc(var(--code-bleed) * -1) 1.7rem;
-    border-radius:14px;
+    width:calc(100% + (var(--code-bleed) * 2));
+    margin:1rem calc(var(--code-bleed) * -1) 1.3rem;
+    border-radius:12px;
   }
 
   .highlight pre,
   div.highlight pre,
   pre.chroma{
-    padding:.95rem .9rem 1rem !important;
-    font-size:.85rem !important;
-    line-height:1.6 !important;
-    letter-spacing:-0.01em;
+    padding:.68rem .72rem .74rem !important;
+    font-family:var(--mono) !important;
+    font-size:11px !important;
+    line-height:1.34 !important;
+    letter-spacing:0 !important;
+    tab-size:2;
+    -webkit-text-size-adjust:100% !important;
+    text-size-adjust:100% !important;
+  }
+
+  .highlight code,
+  .chroma code,
+  pre.chroma code{
+    font-size:inherit !important;
+    line-height:inherit !important;
+    letter-spacing:inherit !important;
+    -webkit-text-size-adjust:100% !important;
+    text-size-adjust:100% !important;
+  }
+
+  .highlight pre::-webkit-scrollbar,
+  pre.chroma::-webkit-scrollbar{
+    height:8px;
   }
 
   .code-copy-btn{
     opacity:1;
     transform:none;
-    top:7px;
-    right:7px;
-    width:22px;
-    height:22px;
+    top:6px;
+    right:6px;
+    width:20px;
+    height:20px;
+  }
+
+  .code-copy-btn::before{
+    font-size:10px;
   }
 }
 
