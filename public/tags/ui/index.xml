@@ -6,12 +6,12 @@
     <description>Recent content in UI on ✻ drakeblog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/ui/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WCAG 2.2, Design, and Modern UI</title>
       <link>http://localhost:1313/posts/design-wcag-modern-ui/</link>
-      <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/design-wcag-modern-ui/</guid>
       <description>Accessibility as Design Web Accessibility is often overlooked in modern web development. With the advent of LLMs for web design or &amp;ldquo;vibecoding&amp;rdquo;, the results are often large elements and typography, and carousels that are distracting. From my point of view, so much web design and writing is becoming homogenized and dishonest. Poor accessibility is now a facet of so many websites that were drafted quickly from generative ai. There are now countless examples of websites failing to meet basic accessibility standards.</description>
     </item>

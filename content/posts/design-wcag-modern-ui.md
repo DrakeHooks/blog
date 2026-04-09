@@ -1,6 +1,6 @@
 ---
 title: "WCAG 2.2, Design, and Modern UI"
-date: 2025-12-15
+date: 2026-04-08
 draft: false
 tags: ["accessibility", "wcag", "design",  "UI"]
 ---
