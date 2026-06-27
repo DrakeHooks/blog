@@ -2,62 +2,38 @@
   const panels = Array.from(document.querySelectorAll(".panel"));
   const openButtons = Array.from(document.querySelectorAll("[data-panel]"));
   const closeButtons = Array.from(document.querySelectorAll("[data-close]"));
+  const themeButtons = Array.from(document.querySelectorAll("[data-theme-toggle]"));
 
   const FOCUSABLE =
     'a[href], area[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])';
 
+  const mobileQuery = window.matchMedia("(max-width: 767px)");
+
   let activePanel = null;
   let lastFocus = null;
+  let touchStartY = 0;
 
-  // iOS-safe scroll lock
-  let scrollY = 0;
-  function lockScroll() {
-    scrollY = window.scrollY || 0;
-    document.documentElement.classList.add("is-panel-open");
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = "100%";
-  }
-  function unlockScroll() {
-    document.documentElement.classList.remove("is-panel-open");
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.width = "";
-    window.scrollTo(0, scrollY);
-  }
-
-  // Scrim element
+  /* Existing scrim support, but KAP-style menu does not use it visually */
   let scrim = document.getElementById("panelScrim");
-  if (!scrim) {
-    scrim = document.createElement("div");
-    scrim.id = "panelScrim";
-    scrim.className = "panel-scrim";
+  if (scrim) {
     scrim.setAttribute("hidden", "");
     scrim.setAttribute("aria-hidden", "true");
-    document.body.appendChild(scrim);
-  }
-
-  function showScrim() {
-    scrim.removeAttribute("hidden");
-    requestAnimationFrame(() => scrim.classList.add("is-open"));
-  }
-  function hideScrim() {
     scrim.classList.remove("is-open");
-    window.setTimeout(() => {
-      scrim.setAttribute("hidden", "");
-    }, 180);
   }
 
   function setPanelFocusable(panel, enabled) {
     const nodes = Array.from(panel.querySelectorAll(FOCUSABLE));
+
     nodes.forEach((el) => {
       if (!panel.contains(el)) return;
 
       if (enabled) {
         const orig = el.getAttribute("data-orig-tabindex");
+
         if (orig !== null) {
           if (orig === "") el.removeAttribute("tabindex");
           else el.setAttribute("tabindex", orig);
+
           el.removeAttribute("data-orig-tabindex");
         }
       } else {
@@ -65,6 +41,7 @@
           const current = el.getAttribute("tabindex");
           el.setAttribute("data-orig-tabindex", current === null ? "" : current);
         }
+
         el.setAttribute("tabindex", "-1");
       }
     });
@@ -77,122 +54,207 @@
   }
 
   function focusFirst(panel) {
-    const closeBtn = panel.querySelector("[data-close]");
-    if (closeBtn) {
-      closeBtn.focus({ preventScroll: true });
-      return;
-    }
     const focusables = getFocusableIn(panel);
-    if (focusables.length) focusables[0].focus({ preventScroll: true });
+    if (focusables.length) {
+      focusables[0].focus({ preventScroll: true });
+    }
+  }
+
+  function setOpenState(isOpen) {
+    document.documentElement.classList.toggle("is-panel-open", isOpen);
+    document.body.classList.toggle("is-panel-open", isOpen);
+  }
+
+  function setButtonExpanded(panelId, expanded) {
+    openButtons.forEach((btn) => {
+      if (btn.getAttribute("data-panel") === panelId) {
+        btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+      }
+    });
+
+    const menuToggle = document.getElementById("menuToggle");
+    if (menuToggle && panelId === "panel-menu") {
+      menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+    }
   }
 
   function closeAll({ restoreFocus = true } = {}) {
-    panels.forEach((p) => {
-      p.classList.remove("is-open");
-      p.setAttribute("aria-hidden", "true");
-      p.setAttribute("inert", "");
-      setPanelFocusable(p, false);
+    const panelToClose = activePanel;
+
+    panels.forEach((panel) => {
+      panel.classList.remove("is-open");
+      panel.setAttribute("aria-hidden", "true");
+      panel.setAttribute("inert", "");
+      setPanelFocusable(panel, false);
     });
 
-    if (activePanel) {
-      activePanel = null;
-      hideScrim();
-      unlockScroll();
+    openButtons.forEach((btn) => {
+      btn.setAttribute("aria-expanded", "false");
+    });
+
+    if (scrim) {
+      scrim.classList.remove("is-open");
+      scrim.setAttribute("hidden", "");
+      scrim.setAttribute("aria-hidden", "true");
     }
 
-    const menuToggle = document.getElementById("menuToggle");
-    if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+    activePanel = null;
+    setOpenState(false);
 
-    if (restoreFocus && lastFocus && typeof lastFocus.focus === "function") {
+    if (
+      restoreFocus &&
+      panelToClose &&
+      lastFocus &&
+      typeof lastFocus.focus === "function"
+    ) {
       lastFocus.focus({ preventScroll: true });
     }
+
     lastFocus = null;
   }
 
   function openPanel(id, openerEl) {
-    closeAll({ restoreFocus: false });
-
     const panel = document.getElementById(id);
     if (!panel) return;
 
+    closeAll({ restoreFocus: false });
+
     lastFocus = openerEl || document.activeElement;
+    activePanel = panel;
 
     panel.classList.add("is-open");
     panel.setAttribute("aria-hidden", "false");
     panel.removeAttribute("inert");
     setPanelFocusable(panel, true);
 
-    activePanel = panel;
+    setButtonExpanded(id, true);
+    setOpenState(true);
 
-    if (id === "panel-menu") {
-      const menuToggle = document.getElementById("menuToggle");
-      if (menuToggle) menuToggle.setAttribute("aria-expanded", "true");
+    if (scrim) {
+      scrim.setAttribute("hidden", "");
+      scrim.setAttribute("aria-hidden", "true");
+      scrim.classList.remove("is-open");
+    }
 
-      lockScroll();
-      showScrim();
+    /*
+      Desktop-style focus trap is intentionally not used here.
+      This menu behaves like a lightweight KAP-style top menu, not a modal.
+    */
+    if (!mobileQuery.matches) {
       focusFirst(panel);
     }
   }
 
+  function isPanelOpen() {
+    return Boolean(activePanel) ||
+      document.documentElement.classList.contains("is-panel-open") ||
+      document.body.classList.contains("is-panel-open") ||
+      panels.some((panel) => panel.classList.contains("is-open"));
+  }
+
   openButtons.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
+    btn.addEventListener("click", (event) => {
+      event.stopPropagation();
+
       const id = btn.getAttribute("data-panel");
       if (!id) return;
 
       const panel = document.getElementById(id);
       const isOpen = panel && panel.classList.contains("is-open");
+
       if (isOpen) closeAll();
       else openPanel(id, btn);
     });
   });
 
-  closeButtons.forEach((btn) =>
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
+  closeButtons.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      event.stopPropagation();
       closeAll();
-    })
+    });
+  });
+
+  panels.forEach((panel) => {
+    panel.addEventListener("click", (event) => {
+      const link = event.target.closest("a");
+      if (link) closeAll({ restoreFocus: false });
+    });
+  });
+
+  if (scrim) {
+    scrim.addEventListener("click", () => closeAll());
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (!isPanelOpen()) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeAll();
+    }
+  });
+
+  /*
+    Close the mobile menu on any mobile scroll gesture.
+    This keeps it feeling like KAP: lightweight, temporary, gone once the page moves.
+  */
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (mobileQuery.matches && isPanelOpen()) {
+        closeAll({ restoreFocus: false });
+      }
+    },
+    { passive: true }
   );
 
-  scrim.addEventListener("click", () => closeAll());
-
-  // Keyboard: ESC closes, TAB traps focus
-  document.addEventListener("keydown", (e) => {
-    if (!activePanel) return;
-
-    if (e.key === "Escape") {
-      e.preventDefault();
-      closeAll();
-      return;
-    }
-
-    if (e.key === "Tab") {
-      const focusables = getFocusableIn(activePanel);
-      if (!focusables.length) return;
-
-      const first = focusables[0];
-      const last = focusables[focusables.length - 1];
-      const current = document.activeElement;
-
-      if (e.shiftKey) {
-        if (current === first || !activePanel.contains(current)) {
-          e.preventDefault();
-          last.focus({ preventScroll: true });
-        }
-      } else {
-        if (current === last) {
-          e.preventDefault();
-          first.focus({ preventScroll: true });
-        }
+  window.addEventListener(
+    "wheel",
+    () => {
+      if (mobileQuery.matches && isPanelOpen()) {
+        closeAll({ restoreFocus: false });
       }
+    },
+    { passive: true }
+  );
+
+  window.addEventListener(
+    "touchstart",
+    (event) => {
+      if (!mobileQuery.matches || !isPanelOpen()) return;
+      touchStartY = event.touches[0]?.clientY || 0;
+    },
+    { passive: true }
+  );
+
+  window.addEventListener(
+    "touchmove",
+    (event) => {
+      if (!mobileQuery.matches || !isPanelOpen()) return;
+
+      const currentY = event.touches[0]?.clientY || 0;
+      const moved = Math.abs(currentY - touchStartY);
+
+      if (moved > 6) {
+        closeAll({ restoreFocus: false });
+      }
+    },
+    { passive: true }
+  );
+
+  /*
+    If viewport changes to desktop while menu is open, cleanly close it.
+  */
+  mobileQuery.addEventListener?.("change", () => {
+    if (!mobileQuery.matches && isPanelOpen()) {
+      closeAll({ restoreFocus: false });
     }
   });
 
   /* Theme toggle: role="switch" + aria-checked */
-  const themeButtons = Array.from(document.querySelectorAll("[data-theme-toggle]"));
-
   function applyThemeUI(theme) {
     const checked = theme === "dark";
+
     themeButtons.forEach((btn) => {
       btn.setAttribute("aria-checked", checked ? "true" : "false");
       btn.setAttribute(
@@ -208,19 +270,22 @@
     applyThemeUI(next);
   }
 
-  function toggleTheme(e) {
-    e?.stopPropagation?.();
+  function toggleTheme(event) {
+    event?.stopPropagation?.();
+
     const current = document.documentElement.dataset.theme || "light";
     const next = current === "dark" ? "light" : "dark";
+
     setTheme(next);
   }
 
   themeButtons.forEach((btn) => {
     btn.addEventListener("click", toggleTheme);
-    btn.addEventListener("keydown", (e) => {
-      if (e.key === " " || e.key === "Enter") {
-        e.preventDefault();
-        toggleTheme(e);
+
+    btn.addEventListener("keydown", (event) => {
+      if (event.key === " " || event.key === "Enter") {
+        event.preventDefault();
+        toggleTheme(event);
       }
     });
   });
