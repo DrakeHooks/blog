@@ -13,7 +13,7 @@ showDate: false
 </div>
 
 <div class="info-bottom">
-  <p>under exclusive license — blog.drakehooks.net</p>
+  <p>under exclusive license — blog.drakehooks.com</p>
   <!-- <p>blog</p> -->
 
   <div class="info-links">
