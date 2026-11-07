@@ -1,4 +1,4 @@
-baseURL = "https://blog.drakehooks.net"
+baseURL = "https://blog.drakehooks.com"
 relativeURLs = true
 canonifyURLs = true
 contentDir = "content"
