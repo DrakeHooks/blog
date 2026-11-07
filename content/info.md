@@ -17,8 +17,8 @@ showDate: false
   <!-- <p>blog</p> -->
 
   <div class="info-links">
-    <a href="https://drakehooks.net/links/">sitemap</a>
+    <a href="https://drakehooks.com/links/">sitemap</a>
     <a href="https://github.com/drakehooks/blog">source</a>
-    <a href="https://drakehooks.net/credits">credits</a>
+    <a href="https://drakehooks.com/credits">credits</a>
   </div>
 </div>
